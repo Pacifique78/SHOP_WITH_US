@@ -16,7 +16,12 @@
         "sourceType": "module"
     },
     "rules": {
+        "max-len":"off",
         "linebreak-style": 0,
-        "no-console":"off"
+        "consistent-return":"off",
+        "no-console":"off",
+        "class-methods-use-this":"off",
+        "no-useless-escape": "off",
+        "import/prefer-default-export": "off"
     }
 }
