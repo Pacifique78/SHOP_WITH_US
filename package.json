@@ -1,0 +1,39 @@
+{
+  "name": "shop_with_us",
+  "version": "1.0.0",
+  "description": "This is a platform where people will be able to shop groceries and other products they need without moving. All products will be delivered to their homes/offices and any other location they need. Payments will be done after deliverance. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run lint",
+    "dev": "nodemon --exec babel-node index.js",
+    "lint": "eslint ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pacifique78/SHOP_WITH_US.git"
+  },
+  "author": "Pacifique&Johnson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Pacifique78/SHOP_WITH_US/issues"
+  },
+  "homepage": "https://github.com/Pacifique78/SHOP_WITH_US#readme",
+  "dependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/register": "^7.9.0",
+    "@babel/runtime": "^7.9.2",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1"
+  }
+}
