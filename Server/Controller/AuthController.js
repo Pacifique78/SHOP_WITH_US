@@ -12,34 +12,33 @@ const client = require('twilio')(accountSid, authToken);
 class User {
   async signUp(req, res) {
     const {
-      firstName, lastName, otherName, email, phoneNumber, password, isBuyer,
+      name, userName, phoneNumber, password, isBuyer,
     } = req.body;
     const hashedPassword = hashPassword(password);
     const isAdmin = false;
     const status = 'inactive';
     const numberOfOrders = 0;
     try {
-      const createQuery = 'INSERT INTO users (firstName, lastName, otherName, email, phoneNumber, password, isAdmin, isBuyer, status, numberOfOrders) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *;';
-      const result = await querry(createQuery, [firstName, lastName, otherName, email, phoneNumber, hashedPassword, isAdmin, isBuyer, status, numberOfOrders]);
+      const createQuery = 'INSERT INTO users (name, userName, phoneNumber, password, isAdmin, isBuyer, status, numberOfOrders) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *;';
+      const result = await querry(createQuery, [name, userName, phoneNumber, hashedPassword, isAdmin, isBuyer, status, numberOfOrders]);
       const { id } = result[0];
       client.verify.services(serviceSid)
         .verifications
         .create({ to: phoneNumber, channel: 'sms' });
-      const token = generateToken(id, email, isAdmin, isBuyer, numberOfOrders);
+      const token = generateToken(id, phoneNumber, isAdmin, isBuyer, numberOfOrders);
       res.status(201).json({
         status: 201,
         message: 'Account created...',
         data: {
           id,
-          email,
-          firstName,
+          userName,
           token,
         },
       });
     } catch (error) {
       res.status(409).json({
         status: 409,
-        error: `User with ${email} already exists`,
+        error: `User with ${userName} already exists`,
       });
     }
   }
@@ -73,15 +72,14 @@ class User {
   }
 
   async signIn(req, res) {
-    const { email, password } = req.body;
-    const selectQuery = 'SELECT * FROM users where email=$1 ;';
-    const value = [email];
-    const rows = await querry(selectQuery, value);
+    const { userName, password } = req.body;
+    const selectQuery = 'SELECT * FROM users where userName=$1 ;';
+    const rows = await querry(selectQuery, [userName]);
     if (rows[0] && checkPassword(password, rows[0].password) && rows[0].status === 'active') {
       const {
-        id, isAdmin, isBuyer, status, numberOfOrders,
+        id, phonenumber, isadmin, isbuyer, status, numberoforders,
       } = rows[0];
-      const token = generateToken(id, email, isAdmin, isBuyer, status, numberOfOrders);
+      const token = generateToken(id, phonenumber, isadmin, isbuyer, status, numberoforders);
       return res.status(200).json({
         status: 200,
         message: 'Logged in successfully',

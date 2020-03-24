@@ -3,19 +3,11 @@ import validationHelper from '../Helpers/ValidationHelper';
 
 const CheckSignUp = (req, res, next) => {
   const signUpSchema = Joi.object().keys({
-    firstName: Joi.string()
+    name: Joi.string()
       .trim()
-      .max(50)
+      .max(255)
       .required(),
-    lastName: Joi.string()
-      .trim()
-      .max(50)
-      .required(),
-    otherName: Joi.string()
-      .trim()
-      .max(50)
-      .allow(''),
-    email: Joi.string().email({ minDomainSegments: 2 }).required(),
+    userName: Joi.string().required(),
     phoneNumber: Joi.string().regex(/^[+]2507[238]\d{7}?/).required(),
     password: Joi.string().regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/),
     isBuyer: Joi.string().valid('yes', 'no'),

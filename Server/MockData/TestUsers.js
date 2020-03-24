@@ -1,16 +1,12 @@
 const testUser = [{
-  firstName: 'test',
-  lastName: 'user',
-  otherName: '',
-  email: 'testuser@test',
+  name: 'test user',
+  userName: 'testuser@test',
   phoneNumber: '+250786427476',
   password: 'Testuser@78',
   isBuyer: 'yes',
 }, {
-  firstName: '',
-  lastName: 'user',
-  otherName: '',
-  email: 'testuser@test',
+  name: '',
+  userName: 'testuser@test',
   phoneNumber: '+250786427476',
   password: 'Testuser@78',
   isBuyer: 'yes',
@@ -19,12 +15,12 @@ const testUser = [{
 }, {
   code: '123456',
 }, {
-  email: 'dammyuser@gmail.com',
+  userName: 'dammyuser',
   password: 'Testuser@78',
 }, {
-  email: 'fakeuser@gmail.com',
+  userName: 'fakeuser@gmail.com',
   password: 'password',
 }, {
-  email: 'fakeuser@gmail.com',
+  userName: 'fakeuser@gmail.com',
 }];
 export default testUser;

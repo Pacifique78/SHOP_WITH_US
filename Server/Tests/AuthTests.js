@@ -36,8 +36,7 @@ describe('User SignUp', () => {
         expect(res.body).to.have.property('message');
         expect(res.body).to.have.property('data');
         expect(res.body.data).to.have.property('id');
-        expect(res.body.data).to.have.property('email');
-        expect(res.body.data).to.have.property('firstName');
+        expect(res.body.data).to.have.property('userName');
         done();
       });
   });
@@ -47,7 +46,6 @@ describe('User SignUp', () => {
       .end((err, res) => {
         expect(res).to.have.status(400);
         expect(res.body).to.have.property('error');
-        expect(res.body.error).to.equal(' firstName  is not allowed to be empty');
         done();
       });
   });
