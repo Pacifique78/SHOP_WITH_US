@@ -4,9 +4,10 @@
   "description": "This is a platform where people will be able to shop groceries and other products they need without moving. All products will be delivered to their homes/offices and any other location they need. Payments will be done after deliverance. ",
   "main": "index.js",
   "scripts": {
-    "test": "npm run lint",
+    "test": "npm run lint && npm run drop && npm run create && nyc --reporter=html --reporter=text mocha --require @babel/register Server/Tests/* --exit",
     "dev": "npm run create && nodemon --exec babel-node index.js",
     "lint": "eslint ./",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "create": "babel-node Server/Models/CreateTables.js createTables",
     "drop": "babel-node Server/Models/DropTables.js dropTables"
   },
@@ -30,18 +31,24 @@
     "@babel/runtime": "^7.9.2",
     "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.1",
     "make-runnable": "^1.3.6",
+    "mocha": "^7.1.1",
     "nodemon": "^2.0.2",
     "pg": "^7.18.2",
     "twilio": "^3.41.1"
   },
   "devDependencies": {
+    "coveralls": "^3.0.11",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-import": "^2.20.1"
+    "eslint-plugin-import": "^2.20.1",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nyc": "^15.0.0"
   }
 }

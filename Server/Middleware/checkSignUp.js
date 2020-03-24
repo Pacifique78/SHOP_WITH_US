@@ -15,6 +15,7 @@ const CheckSignUp = (req, res, next) => {
       .trim()
       .max(50)
       .allow(''),
+    email: Joi.string().email({ minDomainSegments: 2 }).required(),
     phoneNumber: Joi.string().regex(/^[+]2507[238]\d{7}?/).required(),
     password: Joi.string().regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/),
     isBuyer: Joi.string().valid('yes', 'no'),
