@@ -20,12 +20,12 @@ class User {
     const numberOfOrders = 0;
     try {
       const createQuery = 'INSERT INTO users (name, userName, phoneNumber, password, isAdmin, isBuyer, status, numberOfOrders) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *;';
-      const result = await querry(createQuery, [name, userName, phoneNumber, hashedPassword, isAdmin, isBuyer, status, numberOfOrders]);
+      const result = await querry(createQuery, [name, userName, phoneNumber, hashedPassword, isAdmin, isBuyer !== 'no', status, numberOfOrders]);
       const { id } = result[0];
       client.verify.services(serviceSid)
         .verifications
         .create({ to: phoneNumber, channel: 'sms' });
-      const token = generateToken(id, phoneNumber, isAdmin, isBuyer, numberOfOrders);
+      const token = generateToken(id, phoneNumber, isAdmin, isBuyer !== 'no', status, numberOfOrders);
       res.status(201).json({
         status: 201,
         message: 'Account created...',

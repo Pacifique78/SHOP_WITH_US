@@ -22,16 +22,17 @@ export const createTables = () => {
         description character varying(255) NOT NULL,
         quantity character varying(255) NOT NULL,
         location character varying(255) NOT NULL,
-        createdOn date NOT NULL,
-        updatedOn date NOT NULL,
+        createdOn character varying(255) NOT NULL,
+        updatedOn character varying(255) NOT NULL,
         state character varying(255) NOT NULL,
         PRIMARY KEY(id)
     );
     CREATE TABLE IF NOT EXISTS
     price_descriptions(
         id serial,
-        buyerId integer NOT NULL,
         orderId integer NOT NULL,
+        buyerId integer NOT NULL,
+        delivererId integer NOT NULL,
         productName character varying(255) NOT NULL,
         description character varying(255) NOT NULL,
         quantity character varying(255) NOT NULL,
