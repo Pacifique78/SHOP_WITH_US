@@ -1,7 +1,7 @@
 import express from 'express';
 import User from '../Controller/AuthController';
 import CheckSignUp from '../Middleware/checkSignUp';
-import { checkToken } from '../Middleware/checkToken';
+import checkToken from '../Middleware/checkToken';
 import checkVerificationCode from '../Middleware/checkVerficationCode';
 import checkSignIn from '../Middleware/checkSignIn';
 
