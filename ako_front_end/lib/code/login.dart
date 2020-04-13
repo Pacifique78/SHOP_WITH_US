@@ -1,3 +1,4 @@
+import 'package:ako_front_end/code/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:ako_front_end/code/home.dart';
@@ -36,6 +37,16 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlutterLogin(
+      theme: LoginTheme(
+          primaryColor: Colors.teal,
+          accentColor: Colors.greenAccent[900],
+          errorColor: Colors.deepOrange,
+          titleStyle: TextStyle(
+            color: Colors.white,
+            fontFamily: 'Quicksand',
+            fontWeight: FontWeight.bold,
+            letterSpacing: 4,
+          )),
       title: 'AKO',
       logo: 'assets/images/ecorp-lightblue.png',
       onLogin: _authUser,

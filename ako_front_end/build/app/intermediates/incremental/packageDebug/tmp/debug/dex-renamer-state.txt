@@ -1,4 +1,4 @@
-#Fri Mar 27 21:37:43 CAT 2020
+#Sun Mar 29 01:24:39 CAT 2020
 base.0=/home/johnson/AndroidStudioProjects/SHOP_WITH_US/ako_front_end/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
