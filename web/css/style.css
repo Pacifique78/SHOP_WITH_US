@@ -1414,7 +1414,7 @@ text-shadow: none;
 
 
 .clsolo{
-  height: 107vh;
+  height: 100vh;
   width: 100vw;
   background: #fff;
   display: -webkit-box;
@@ -1442,7 +1442,7 @@ text-shadow: none;
 box-shadow: -3px 3px 31px 0px rgba(128,123,128,1);
 }
 #formContainer.toggle {
-  min-height: 520px;
+  min-height: 570px;
   -webkit-transition-delay: 0s;
           transition-delay: 0s;
 
@@ -1529,7 +1529,7 @@ box-shadow: -3px 3px 31px 0px rgba(128,123,128,1);
 }
 .formRight form section label p {
   color: #fff;
-  margin: 0 0 10px 0;
+  margin: 0 0 2px 0;
   font-weight: 600;
   font-size: 12px;
   opacity: 0.5;
@@ -1669,5 +1669,12 @@ box-shadow: -3px 3px 31px 0px rgba(128,123,128,1);
   -webkit-transition-delay: 0.3s;
           transition-delay: 0.3s;
 }
+
+#cont-typ{
+	width: 100%;
+	border:none;
+}
+
+
 
 	
