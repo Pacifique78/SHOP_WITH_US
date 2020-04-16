@@ -1,3 +1,11 @@
+[...document.getElementsByTagName('input')].forEach((input) => {
+  input.addEventListener('click', () => {
+    [...document.getElementsByClassName('fields')].forEach((field) => {
+      // eslint-disable-next-line no-param-reassign
+      field.style.display = 'none';
+    });
+  });
+});
 document.getElementById('register').addEventListener('submit', async (e) => {
   e.preventDefault();
   [...document.getElementsByClassName('fields')].forEach((field) => {

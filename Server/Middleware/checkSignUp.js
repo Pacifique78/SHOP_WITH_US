@@ -14,7 +14,7 @@ const CheckSignUp = (req, res, next) => {
       })),
     password: Joi.string().trim().regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/)
       .error(() => ({
-        message: 'password must have 1Capital, 1Small, 1Number, 1Character',
+        message: 'password: 1Capital, 1Small, 1Number, 1Character',
       })),
     confirmPassword: Joi.any().valid(Joi.ref('password')).required()
       .error(() => ({
