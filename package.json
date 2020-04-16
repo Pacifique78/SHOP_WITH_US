@@ -4,6 +4,7 @@
   "description": "This is a platform where people will be able to shop groceries and other products they need without moving. All products will be delivered to their homes/offices and any other location they need. Payments will be done after deliverance. ",
   "main": "index.js",
   "scripts": {
+    "start": "npm run drop && npm run create && babel-node index.js",
     "test": "npm run drop && npm run create && nyc --reporter=html --reporter=text mocha --require @babel/register Server/Tests/* --exit",
     "dev": "npm run create && nodemon --exec babel-node index.js",
     "lint": "eslint ./",
