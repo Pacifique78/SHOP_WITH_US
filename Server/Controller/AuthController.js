@@ -38,7 +38,7 @@ class User {
     } catch (error) {
       res.status(409).json({
         status: 409,
-        error: `User with ${userName} already exists`,
+        error: `User with (${userName}) username exists`,
       });
     }
   }

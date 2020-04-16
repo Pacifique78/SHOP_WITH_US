@@ -1,8 +1,9 @@
 const testUser = [{
   name: 'test user',
-  userName: 'testuser@test',
+  userName: 'test',
   phoneNumber: '+250786427476',
   password: 'Testuser@78',
+  confirmPassword: 'Testuser@78',
   isBuyer: 'yes',
 }, {
   name: '',

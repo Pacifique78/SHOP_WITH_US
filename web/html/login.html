@@ -140,14 +140,17 @@
                         <section>
                             <label>
                                 <p>Username</p>
-                                <input type="text" placeholder=" ">
+                                <input type="text" placeholder=" " id="login-userName">
                                 <div class="border"></div>
+                                <div id="login-userName-div" class="fields"></div>
                             </label>
                             <label>
                                 <p>Password</p>
-                                <input type="password" placeholder=" ">
+                                <input type="password" placeholder=" " id="login-password">
                                 <div class="border"></div>
+                                <div id="login-password-div" class="fields"></div>
                             </label>
+                            <div id="login-error"></div><br>
                            <button type="submit" >Login</button>
                         </section>
                         <footer>
@@ -164,42 +167,48 @@
                         <section>
                             <label>
                                 <p>Name</p>
-                                <input type="text" placeholder=" ">
+                                <input type="text" placeholder=" " id="name">
                                 <div class="border"></div>
+                                <div id="name-div" class="fields"></div>
                             </label>
                             <label>
                                 <p>Username</p>
-                                <input type="text" placeholder=" ">
+                                <input type="text" placeholder=" " id="userName">
                                 <div class="border"></div>
+                                <div id="userName-div" class="fields"></div>
                             </label>
 
                              <label>
                                 <p>Phone</p>
-                                <input type="text" placeholder="0788336717">
+                                <input type="text" placeholder="+250788336717" id="phoneNumber">
                                 <div class="border"></div>
+                                <div id="phoneNumber-div" class="fields"></div>
                             </label>
                             <label>
                                 <p>Password</p>
-                                <input type="password" placeholder=" ">
+                                <input type="password" placeholder=" " id="password">
                                 <div class="border"></div>
+                                <div id="password-div" class="fields"></div>
                             </label>
                             <label>
                                 <p>Repeat Password</p>
-                                <input type="password" placeholder=" ">
+                                <input type="password" placeholder=" " id="confirmPassword">
                                 <div class="border"></div>
+                                <div id="confirmPassword-div" class="fields"></div>
                             </label>
                               <label>
                                 <p>Register as</p>
                                 <select id="cont-typ">
-                                    <option value="buyer">Buyer</option>
-                                    <option value="deliveries">Deliverer</option>
+                                    <option value="yes">Buyer</option>
+                                    <option value="no">Deliverer</option>
                                 </select>
                                 
                             </label>
+                            <div id="error"></div><br>
                             <button type="submit">Register</button>
                         </section>
                         <footer>
-                         <button type="button" class="registerBtn">login</button>
+                         <button type="button" class="registerBtn" id="login-btn-redirect">login</button>
                         </footer>
                     </form>
                 </div>
@@ -264,6 +273,7 @@ At vero eos et accusam et justo duo dolores et ea rebum. Stet gubergren no sea t
     <!-- ***** Footer Area End ***** -->
 
     <!-- ******* All JS Files ******* -->
+    <script type="module" src="../js//connect.js"></script>
     <!-- jQuery js -->
     <script src="../js/jquery.min.js"></script>
     <!-- Popper js -->

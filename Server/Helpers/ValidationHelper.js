@@ -7,6 +7,7 @@ const validationHelper = (res, schemasValidation, next) => {
     return res.status(400).json({
       status: 400,
       error: validationErrors[0],
+      path: schemasValidation.error.details[0].path[0],
     });
   }
   next();
