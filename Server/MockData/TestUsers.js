@@ -41,5 +41,20 @@ const testUser = [{
   phoneNumber: '+250786427476',
   password: 'Testuser@78',
   isBuyer: 'yes',
+}, {
+  email: process.env.GMAILACCOUNT,
+}, {
+  email: 'helloworld@gmail.com',
+}, {
+  email: 'helloworldgmail.com',
+}, {
+  password: 'Hello@123',
+  confirmPassword: 'Hello@123',
+}, {
+  password: 'Hello',
+  confirmPassword: 'Hello@123',
+}, {
+  password: 'Hello@123',
+  confirmPassword: 'Hello',
 }];
 export default testUser;

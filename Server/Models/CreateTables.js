@@ -40,7 +40,7 @@ export const createTables = () => {
         PRIMARY KEY(id)
     );
     INSERT INTO users (name, email, phoneNumber, password, isAdmin, isBuyer, status, numberOfOrders) 
-    VALUES ('Pacifique Tuyizere', 'Admin@ako.com', '+250788811122', '$2b$08$ASiZsryIorWE9/lAf5gA9O2PCsjwM/19ApfYpTccj9YkLbV8MIqTm', true, true, 'active', 0);
+    VALUES ('Pacifique Tuyizere', 'kigalicodingacademy@gmail.com', '+250788811122', '$2b$08$ASiZsryIorWE9/lAf5gA9O2PCsjwM/19ApfYpTccj9YkLbV8MIqTm', true, true, 'active', 0);
     INSERT INTO users (name, email, phoneNumber, password, isAdmin, isBuyer, status, numberOfOrders) 
     VALUES ('dammy user', 'dammyuser@ako.com', '+250788811122', '$2b$08$V3ymvmuOZOBZA9EtLSpmHei/m.xfY5hL4INynW0f18vuFnDQA2diq', false, false, 'active', 0);`;
   pool.query(createTablesQuery)
