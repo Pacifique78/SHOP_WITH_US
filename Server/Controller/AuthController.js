@@ -2,6 +2,7 @@ import hashPassword from '../Helpers/HashPossword';
 import { querry } from '../Db';
 import generateToken from '../Helpers/generateToken';
 import checkPassword from '../Helpers/checkPassword';
+import { sendResetPasswordEmail } from '../Helpers/sendEmail';
 
 const {
   accountSid, authToken, serviceSid,
@@ -91,6 +92,47 @@ class User {
     return res.status(401).json({
       status: 401,
       error: 'Invalid email/ password OR phoneNumber not confirmed',
+    });
+  }
+
+  async forgetPassword(req, res) {
+    const { email } = req.body;
+    const selectQuery = 'SELECT * FROM users where email=$1 ;';
+    const rows = await querry(selectQuery, [email]);
+    if (rows[0]) {
+      const {
+        id, phonenumber, isadmin, isbuyer, status, numberoforders,
+      } = rows[0];
+      const token = generateToken(id, email, phonenumber, isadmin, isbuyer, status, numberoforders);
+      const data = [{
+        ...rows[0],
+        url: `${process.env.forgotPasswordUrl}/${token}`,
+      }];
+      sendResetPasswordEmail('forgotPassword', data);
+      return res.status(200).json({
+        status: 200,
+        message: 'Email sent, Please check your inbox',
+      });
+    }
+    return res.status(404).json({
+      status: 404,
+      error: `User with ${email} doesn't exist`,
+    });
+  }
+
+  async resetPassword(req, res) {
+    const { id } = req.tokenData;
+    const { password } = req.body;
+    const hashedPassword = hashPassword(password);
+    const updateQuery = 'UPDATE users SET password=$1 where id=$2 RETURNING *;';
+    const rows = await querry(updateQuery, [hashedPassword, id]);
+    const data = [{
+      ...rows[0],
+    }];
+    sendResetPasswordEmail('resetPassword', data);
+    return res.status(200).json({
+      status: 200,
+      message: 'Password reset successfully',
     });
   }
 }

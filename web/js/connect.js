@@ -21,7 +21,7 @@ document.getElementById('register').addEventListener('submit', async (e) => {
   const selected = document.getElementById('cont-typ');
   const isBuyer = selected.options[selected.selectedIndex].value;
 
-  const response = await fetch('http://localhost:4500/auth/signup', {
+  const response = await fetch('https://akoonlineshop.herokuapp.com/auth/signup', {
     method: 'POST',
     headers: {
       Accept: 'application/json, text/plain, */*',
@@ -61,7 +61,7 @@ document.getElementById('login').addEventListener('submit', async (e) => {
   const email = document.getElementById('login-email').value;
   const password = document.getElementById('login-password').value;
 
-  const response = await fetch('http://localhost:4500/auth/signin', {
+  const response = await fetch('https://akoonlineshop.herokuapp.com/auth/signin', {
     method: 'POST',
     headers: {
       Accept: 'application/json, text/plain, */*',

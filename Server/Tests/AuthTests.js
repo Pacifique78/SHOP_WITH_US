@@ -172,3 +172,79 @@ describe('User Signin', () => {
       });
   });
 });
+describe('forgot Password', () => {
+  it('Should send an email to reset password', (done) => {
+    chai.request(app).post('/auth/forgot-password')
+      .send(testUser[10])
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body).to.have.property('message');
+        expect(res.body.message).to.equal('Email sent, Please check your inbox');
+        done();
+      });
+  });
+  it('Should not send an email to reset password: user doesn\'t exist', (done) => {
+    chai.request(app).post('/auth/forgot-password')
+      .send(testUser[11])
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body).to.have.property('error');
+        expect(res.body.error).to.equal('User with helloworld@gmail.com doesn\'t exist');
+        done();
+      });
+  });
+  it('Should not send an email to reset password: Invalid input or missing input', (done) => {
+    chai.request(app).post('/auth/forgot-password')
+      .send(testUser[12])
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body).to.have.property('error');
+        expect(res.body.error).to.equal('email is not valid');
+        done();
+      });
+  });
+});
+describe('reset Password', () => {
+  it('Should allow a user to reset password', (done) => {
+    chai.request(app).post('/auth/reset-password')
+      .send(testUser[13])
+      .set('Authorization', process.env.adminToken)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body).to.have.property('message');
+        expect(res.body.message).to.equal('Password reset successfully');
+        done();
+      });
+  });
+  it('Should NOT allow a user to reset password: Invalid input or missing input', (done) => {
+    chai.request(app).post('/auth/reset-password')
+      .send(testUser[14])
+      .set('Authorization', process.env.adminToken)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body).to.have.property('error');
+        expect(res.body.error).to.equal('password: 1Capital, 1Small, 1Number, 1Character');
+        done();
+      });
+  });
+  it('Should NOT allow a user to reset password: Invalid input or missing input', (done) => {
+    chai.request(app).post('/auth/reset-password')
+      .send(testUser[15])
+      .set('Authorization', process.env.adminToken)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body).to.have.property('error');
+        expect(res.body.error).to.equal('Passwords don\'t match');
+        done();
+      });
+  });
+});
+describe('Reset password render html', () => {
+  it('Should allow a user to reset password', (done) => {
+    chai.request(app).get(`/auth/forgot-password/${process.env.adminToken}`)
+      .end((err, res) => {
+        expect(res).to.have.property('text');
+        done();
+      });
+  });
+});
