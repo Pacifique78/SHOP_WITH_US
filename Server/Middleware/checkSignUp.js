@@ -7,7 +7,10 @@ const CheckSignUp = (req, res, next) => {
       .trim()
       .max(255)
       .required(),
-    userName: Joi.string().trim().required(),
+    email: Joi.string().trim().regex(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)
+      .error(() => ({
+        message: 'email is not valid',
+      })),
     phoneNumber: Joi.string().regex(/^[+]2507[238]\d{7}?/).required()
       .error(() => ({
         message: 'phone number format +2507xxxxxxxx',
