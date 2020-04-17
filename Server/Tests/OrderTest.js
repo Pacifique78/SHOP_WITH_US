@@ -65,6 +65,16 @@ describe('View all orders', () => {
         done();
       });
   });
+  it('Should not return all orders', (done) => {
+    chai.request(app).get('/orders')
+      .set('Authorization', process.env.userToken)
+      .end((err, res) => {
+        expect(res).to.have.status(403);
+        expect(res.body).to.have.property('error');
+        expect(res.body.error).to.equal('only deliverers can perform this');
+        done();
+      });
+  });
   // it('Should should not return an order: no order found', (done) => {
   //   chai.request(app).get('/orders')
   //     .set('Authorization', process.env.delivererToken)
@@ -163,6 +173,16 @@ describe('Delete an order', () => {
         expect(res).to.have.status(404);
         expect(res.body).to.have.property('error');
         expect(res.body.error).to.equal('Order not found');
+        done();
+      });
+  });
+  it('Should not delete order: unauthorized', (done) => {
+    chai.request(app).delete(`/orders/${testOrder[2].orderId}`)
+      .set('Authorization', process.env.userToken)
+      .end((err, res) => {
+        expect(res).to.have.status(403);
+        expect(res.body).to.have.property('error');
+        expect(res.body.error).to.equal('only admins can perform this');
         done();
       });
   });

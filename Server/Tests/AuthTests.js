@@ -36,13 +36,40 @@ describe('User SignUp', () => {
         expect(res.body).to.have.property('message');
         expect(res.body).to.have.property('data');
         expect(res.body.data).to.have.property('id');
-        expect(res.body.data).to.have.property('userName');
+        expect(res.body.data).to.have.property('email');
         done();
       });
   });
   it('Should NOT allow a user to signup: Invalid data', (done) => {
     chai.request(app).post('/auth/signup')
       .send(testUser[1])
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body).to.have.property('error');
+        done();
+      });
+  });
+  it('Should NOT allow a user to signup: Invalid data', (done) => {
+    chai.request(app).post('/auth/signup')
+      .send(testUser[7])
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body).to.have.property('error');
+        done();
+      });
+  });
+  it('Should NOT allow a user to signup: Invalid data', (done) => {
+    chai.request(app).post('/auth/signup')
+      .send(testUser[8])
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body).to.have.property('error');
+        done();
+      });
+  });
+  it('Should NOT allow a user to signup: Invalid data', (done) => {
+    chai.request(app).post('/auth/signup')
+      .send(testUser[9])
       .end((err, res) => {
         expect(res).to.have.status(400);
         expect(res.body).to.have.property('error');
@@ -130,7 +157,7 @@ describe('User Signin', () => {
       .end((err, res) => {
         expect(res).to.have.status(401);
         expect(res.body).to.have.property('error');
-        expect(res.body.error).to.equal('Invalid username/ password OR phoneNumber not confirmed');
+        expect(res.body.error).to.equal('Invalid email/ password OR phoneNumber not confirmed');
         done();
       });
   });

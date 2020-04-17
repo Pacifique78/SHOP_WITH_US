@@ -1,4 +1,4 @@
-const checkDeliverer = async (req, res, next) => {
+const checkDeliverer = (req, res, next) => {
   if (req.tokenData.isBuyer) {
     return res.status(403).json({
       status: 403,

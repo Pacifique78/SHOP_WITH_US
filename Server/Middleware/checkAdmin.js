@@ -1,4 +1,4 @@
-const checkAdmin = async (req, res, next) => {
+const checkAdmin = (req, res, next) => {
   if (req.tokenData.isAdmin) {
     next();
   } else {

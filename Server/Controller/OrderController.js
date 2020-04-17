@@ -146,7 +146,6 @@ class Order {
       });
     }
     const selectQuerry2 = 'SELECT * FROM orders WHERE id=$1;';
-    console.log(priceDescriptionFound);
     const orderFound = await querry(selectQuerry2, [priceDescriptionFound[0].orderid]);
     if (!orderFound) {
       return res.status(404).json({

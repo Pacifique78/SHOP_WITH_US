@@ -3,7 +3,7 @@ import validationHelper from '../Helpers/ValidationHelper';
 
 const checkSignIn = (req, res, next) => {
   const signInSchema = Joi.object().keys({
-    userName: Joi.string().required(),
+    email: Joi.string().required(),
     password: Joi.string().required(),
   });
   const schemasValidation = Joi.validate(req.body, signInSchema);

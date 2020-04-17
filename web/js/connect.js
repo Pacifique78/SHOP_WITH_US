@@ -14,7 +14,7 @@ document.getElementById('register').addEventListener('submit', async (e) => {
   });
   document.getElementById('error').style.display = 'none';
   const name = document.getElementById('name').value;
-  const userName = document.getElementById('userName').value;
+  const email = document.getElementById('email').value;
   const phoneNumber = document.getElementById('phoneNumber').value;
   const password = document.getElementById('password').value;
   const confirmPassword = document.getElementById('confirmPassword').value;
@@ -28,7 +28,7 @@ document.getElementById('register').addEventListener('submit', async (e) => {
       'content-type': 'application/json',
     },
     body: JSON.stringify({
-      name, userName, phoneNumber, password, confirmPassword, isBuyer,
+      name, email, phoneNumber, password, confirmPassword, isBuyer,
     }),
   });
   const json = await response.json();
@@ -58,7 +58,7 @@ document.getElementById('login').addEventListener('submit', async (e) => {
     field.style.display = 'none';
   });
   document.getElementById('login-error').style.display = 'none';
-  const userName = document.getElementById('login-userName').value;
+  const email = document.getElementById('login-email').value;
   const password = document.getElementById('login-password').value;
 
   const response = await fetch('http://localhost:4500/auth/signin', {
@@ -68,7 +68,7 @@ document.getElementById('login').addEventListener('submit', async (e) => {
       'content-type': 'application/json',
     },
     body: JSON.stringify({
-      userName, password,
+      email, password,
     }),
   });
   const json = await response.json();

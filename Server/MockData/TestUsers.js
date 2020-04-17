@@ -1,13 +1,13 @@
 const testUser = [{
   name: 'test user',
-  userName: 'test',
+  email: 'test@ako.com',
   phoneNumber: '+250786427476',
   password: 'Testuser@78',
   confirmPassword: 'Testuser@78',
   isBuyer: 'yes',
 }, {
-  name: '',
-  userName: 'testuser@test',
+  name: 'Test user',
+  email: 'testuser@test',
   phoneNumber: '+250786427476',
   password: 'Testuser@78',
   isBuyer: 'yes',
@@ -16,12 +16,30 @@ const testUser = [{
 }, {
   code: '123456',
 }, {
-  userName: 'dammyuser',
+  email: 'dammyuser@ako.com',
   password: 'Testuser@78',
 }, {
-  userName: 'fakeuser@gmail.com',
+  email: 'fakeuser@gmail.com',
   password: 'password',
 }, {
-  userName: 'fakeuser@gmail.com',
+  email: 'fakeuser@gmail.com',
+}, {
+  name: 'Test user',
+  email: 'testuser@test.com',
+  phoneNumber: '0786427476',
+  password: 'Testuser@78',
+  isBuyer: 'yes',
+}, {
+  name: 'Test user',
+  email: 'testuser@test.com',
+  phoneNumber: '+250786427476',
+  password: 'Testuser78',
+  isBuyer: 'yes',
+}, {
+  name: 'Test user',
+  email: 'testuser@test.com',
+  phoneNumber: '+250786427476',
+  password: 'Testuser@78',
+  isBuyer: 'yes',
 }];
 export default testUser;
