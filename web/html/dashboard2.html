@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Ako</title>
-  <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <!-- Font Awesome -->
+  <title>Ako</title>
+
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../fonts/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- IonIcons -->
+  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+
 </head>
+
+-->
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
@@ -146,8 +150,9 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../../index.html" class="brand-link">
+    <a href="index.html" class="brand-link">
      
+     Home
     </a>
 
     <!-- Sidebar -->
@@ -190,7 +195,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="pages/forms/general.html" class="nav-link">
+            <a href="form.html" class="nav-link">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
                 Shop
@@ -211,137 +216,174 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+    <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Place your order</h1>
-          </div>
+            <h1 class="m-0 text-dark">Dashboard </h1>
+          </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">order Form</li>
+              <li class="breadcrumb-item active">Dashboard User</li>
             </ol>
           </div>
+
+          <!-- /.col -->
         </div>
+        <section class="Porduct-grid">
+        <div class="container" style="padding-bottom: 35px; padding-top: 10px;">
+            <div class="order-cont">
+               <h3 class=" uza-btn btn-2 recent-orders" href>Recent Orders</h3> 
+            </div>
+           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">place an order</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="product-card" style="display: flex;">
+                      <div class="product-image col-sm-4">
+                        <img src="../img/bg-img/spii.png" style="width: 30vw; height: 16vh;">
+                      </div>
+                      <div class="product-details col-sm-8 mod-det">
+                        <label>Location:</label>
+                        <input class="f-in-so" type="text-sm" name="loc" value="Nyamirambo, kwamutw">
+                        <label>Products:</label>
+                        <textarea  class="md-textarea f-in-so" placeholder="isukali. 10Kg" style="min-height: 25px;"></textarea>
+                        <label>Service fee</label>
+                        <input   class="f-in-so" type="text-sm" name="" value="1500" placeholder="Rwf">
+                        <label>Total fee</label>
+                        <input   class="f-in-so" type="text" name="" value="14500">
+                        
+                        
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary bg-red" data-dismiss="modal">cancel</button>
+                    <button type="button" class="btn btn-primary"> save</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <ul class="auto-grid">
+                <div id="products" class="grid-ho list-group" style="background: white; border-bottom: 2px solid #007bff;">
+                        <div class="item  ">
+                            <div class="thumbnail">
+                                <img class="group list-group-image" src="../img/bg-img/spii.png" alt="" />
+                                <div class="caption" style="display: table;">
+                                    <div class="col-12 hot-dog"><p>Items: <i>Foods </i></p></div>
+                                    <div class="col-12 hot-dog"><p>time: <i>20 min ago</i></p></div>
+                                    
+                                </div>
+                                <div class="col-xs-12 col-md-6" style="display: flex;align-items: center; justify-content: center;">
+                                    <a class="btn btn-outline-primary take" href=""data-toggle="modal" data-target="#exampleModal">edit</a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div id="products" class="grid-ho list-group" style="background: white; border-bottom: 2px solid #007bff;">
+                        <div class="item  ">
+                            <div class="thumbnail">
+                                <img class="group list-group-image" src="../img/bg-img/spii.png" alt="" />
+                                <div class="caption" style="display: table;">
+                                    <div class="col-12 hot-dog"><p>Items: <i>Foods </i></p></div>
+                                    <div class="col-12 hot-dog"><p>time: <i>20 min ago</i></p></div>
+                                    
+                                </div>
+                                <div class="col-xs-12 col-md-6" style="display: flex;align-items: center; justify-content: center;">
+                                    <a class="btn btn-outline-primary take" href="" data-toggle="modal" data-target="#exampleModal">edit</a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                
+                <div id="products" class="grid-ho list-group" style="background: white; border-bottom: 2px solid #007bff;">
+                        <div class="item  ">
+                            <div class="thumbnail">
+                                <img class="group list-group-image" src="../img/bg-img/spii.png" alt="" />
+                                <div class="caption" style="display: table;">
+                                    <div class="col-12 hot-dog"><p>Items: <i>Foods </i></p></div>
+                                    <div class="col-12 hot-dog"><p>time: <i>20 min ago</i></p></div>
+                                    
+                                </div>
+                                <div class="col-xs-12 col-md-6" style="display: flex;align-items: center; justify-content: center;">
+                                    <a class="btn btn-outline-primary take" href="" data-toggle="modal" data-target="#exampleModal">edit</a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div id="products" class="grid-ho list-group" style="background: white; border-bottom: 2px solid #007bff;">
+                        <div class="item  ">
+                            <div class="thumbnail">
+                                <img class="group list-group-image" src="../img/bg-img/spii.png" alt="" />
+                                <div class="caption" style="display: table;">
+                                    <div class="col-12 hot-dog"><p>Items: <i>Foods </i></p></div>
+                                    <div class="col-12 hot-dog"><p>time: <i>20 min ago</i></p></div>
+                                    
+                                </div>
+                                <div class="col-xs-12 col-md-6" style="display: flex;align-items: center; justify-content: center;">
+                                    <a class="btn btn-outline-primary take" href="" data-toggle="modal" data-target="#exampleModal">edit</a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                
+
+        
+
+
+              
+            </ul>
+
+
+        </div>
+    </section><!-- /.row -->
       </div><!-- /.container-fluid -->
-    </section>
+    </div>
+    <!-- /.content-header -->
 
     <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row d-flex justify-content-center">
-          <!-- left column -->
-
-          <!--/.col (left) -->
-          <!-- right column -->
-          <div class="col-md-9">
-            <!-- general form elements disabled -->
-            <div class="card ">
-              <div class="card-header">
-                <h3 class="card-title">fill the form</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <form role="form">
-                  <div class="row input-group">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>location</label>
-                        <input type="text" class="form-control" placeholder="District.">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label></label>
-                        <input type="text" class="form-control" placeholder="sector" >
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>more info on location</label>
-                        <textarea class="form-control" rows="3" placeholder="kwa mutwe muri 100m uvuye kumuhanda ..."></textarea>
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <!-- input states -->
-                  <div class="form-group">
-                    <label class="col-form-label" for="inputSuccess"><i class=""></i>product name</label>
-                    <input type="text" class="form-control" id="inputSuccess" placeholder="Umuceri">
-                  </div>
-                  <div class="form-group">
-                    <label>Product desc</label>
-                        <textarea class="form-control" rows="3" placeholder="ibiro bitatu bya tanzania muremure ..."></textarea>
-                  </div>
-                  <!--<div class="row">
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Select Disabled</label>
-                        <select class="form-control" disabled>
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>-->
-
-                  <button type="button" class="btn btn-outline-primary">Place my order</button>
-
-                </form>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-            <!-- general form elements disabled -->
-
-            <!-- /.card -->
-          </div>
-          <!--/.col (right) -->
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </section>
+   
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      
-    </div>
-    <strong> &copy;2020 Ako
-  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <strong>&copy; 2020 Ako
+    <div class="float-right d-none d-sm-inline-block">
+     
+    </div>
+  </footer>
 </div>
 <!-- ./wrapper -->
 
+<!-- REQUIRED SCRIPTS -->
+
 <!-- jQuery -->
 <script src="../js/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
+<!-- Bootstrap -->
 <script src="../js/bootstrap.bundle.min.js"></script>
-<!-- bs-custom-file-input -->
-<script src="../js/bs-custom-file-input.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
+<!-- AdminLTE -->
+<script src="../js/adminlte.js"></script>
+
+<!-- OPTIONAL SCRIPTS -->
+<script src="../js/Chart.min.js"></script>
 <script src="../js/demo.js"></script>
-<script type="text/javascript">
-$(document).ready(function () {
-  bsCustomFileInput.init();
-});
-</script>
+<script src="../js/dashboard3.js"></script>
 </body>
 </html>
