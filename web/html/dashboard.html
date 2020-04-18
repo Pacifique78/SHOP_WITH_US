@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Dashboard 3</title>
+  <title>Ako</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../fonts/fontawesome-free/css/all.min.css">
@@ -18,15 +18,7 @@
   <link rel="stylesheet" href="../style.css">
 
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to to the body tag
-to get the desired effect
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
+
 -->
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -160,6 +152,7 @@ to get the desired effect
     <!-- Brand Logo -->
     <a href="index.html" class="brand-link">
      
+     Home
     </a>
 
     <!-- Sidebar -->
@@ -202,7 +195,7 @@ to get the desired effect
             </ul>
           </li>
           <li class="nav-item">
-            <a href="pages/forms/general.html" class="nav-link">
+            <a href="form.html" class="nav-link">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
                 Shop
@@ -241,137 +234,109 @@ to get the desired effect
         <section class="Porduct-grid">
         <div class="container" style="padding-bottom: 35px; padding-top: 10px;">
             <div class="order-cont">
-               <h3 class=" uza-btn btn-2 recent-orders" href>Orders</h3> 
+               <h3 class=" uza-btn btn-2 recent-orders" href>Recent Orders</h3> 
             </div>
-           
+           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> offer to deliver</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="product-card" style="display: flex;">
+                      <div class="product-image col-sm-4">
+                        <img src="../img/bg-img/spii.png" style="width: 30vw; height: 16vh;">
+                      </div>
+                      <div class="product-details col-sm-8 mod-det">
+                        <h6>Locaton:</h6>
+                        <p>Nyamirambo, kwamutw</p>
+                        <h6>Product name</h6>
+                        <p>isukali. 10Kg</p>
+                        <h6>Service price:</h6>
+                        <p>1500 <i>Rwf</i></p>
+                        <h6>Total price</h6>
+                        <p>1400 <i>Rwf</i></p>
+                        
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary bg-red" data-dismiss="modal">leave</button>
+                    <button type="button" class="btn btn-primary"> Take offer</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
             <ul class="auto-grid">
-                <div id="products" class="grid-ho list-group">
+                <div id="products" class="grid-ho list-group" style="background: white; border-bottom: 2px solid #007bff;">
                         <div class="item  ">
                             <div class="thumbnail">
-                                <img class="group list-group-image" src="../img/bg-img/order.jpg" alt="" />
+                                <img class="group list-group-image" src="../img/bg-img/spii.png" alt="" />
                                 <div class="caption" style="display: table;">
-                                    <div class="col-12 hot-dog"><p>Location: <i>Nyamirambo, Kwamutwe</i></p></div>
-                                    <div class="col-12 hot-dog"><p>Name: <i>Johnson43</i></p></div>
-                                    <div class="col-12 hot-dog"><p>Items: <i>food&medecines</i></p></div>
+                                    <div class="col-12 hot-dog"><p>Items: <i>Foods </i></p></div>
+                                    <div class="col-12 hot-dog"><p>time: <i>20 min ago</i></p></div>
+                                    
                                 </div>
                                 <div class="col-xs-12 col-md-6" style="display: flex;align-items: center; justify-content: center;">
-                                    <a class="btn btn-outline-primary take" href="">Take</a>
+                                    <a class="btn btn-outline-primary take" href=""data-toggle="modal" data-target="#exampleModal">Deliver</a>
                                 </div>
                             </div>
                         </div>
                 </div>
+                <div id="products" class="grid-ho list-group" style="background: white; border-bottom: 2px solid #007bff;">
+                        <div class="item  ">
+                            <div class="thumbnail">
+                                <img class="group list-group-image" src="../img/bg-img/spii.png" alt="" />
+                                <div class="caption" style="display: table;">
+                                    <div class="col-12 hot-dog"><p>Items: <i>Foods </i></p></div>
+                                    <div class="col-12 hot-dog"><p>time: <i>20 min ago</i></p></div>
+                                    
+                                </div>
+                                <div class="col-xs-12 col-md-6" style="display: flex;align-items: center; justify-content: center;">
+                                    <a class="btn btn-outline-primary take" href="" data-toggle="modal" data-target="#exampleModal">Deliver</a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                
+                <div id="products" class="grid-ho list-group" style="background: white; border-bottom: 2px solid #007bff;">
+                        <div class="item  ">
+                            <div class="thumbnail">
+                                <img class="group list-group-image" src="../img/bg-img/spii.png" alt="" />
+                                <div class="caption" style="display: table;">
+                                    <div class="col-12 hot-dog"><p>Items: <i>Foods </i></p></div>
+                                    <div class="col-12 hot-dog"><p>time: <i>20 min ago</i></p></div>
+                                    
+                                </div>
+                                <div class="col-xs-12 col-md-6" style="display: flex;align-items: center; justify-content: center;">
+                                    <a class="btn btn-outline-primary take" href="" data-toggle="modal" data-target="#exampleModal">Deliver</a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div id="products" class="grid-ho list-group" style="background: white; border-bottom: 2px solid #007bff;">
+                        <div class="item  ">
+                            <div class="thumbnail">
+                                <img class="group list-group-image" src="../img/bg-img/spii.png" alt="" />
+                                <div class="caption" style="display: table;">
+                                    <div class="col-12 hot-dog"><p>Items: <i>Foods </i></p></div>
+                                    <div class="col-12 hot-dog"><p>time: <i>20 min ago</i></p></div>
+                                    
+                                </div>
+                                <div class="col-xs-12 col-md-6" style="display: flex;align-items: center; justify-content: center;">
+                                    <a class="btn btn-outline-primary take" href="" data-toggle="modal" data-target="#exampleModal">Deliver</a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                
 
-                <div id="products" class="grid-ho list-group">
-                        <div class="item  ">
-                            <div class="thumbnail">
-                                <img class="group list-group-image" src="../img/bg-img/order.jpg" alt="" />
-                                <div class="caption" style="display: table;">
-                                    <div class="col-12 hot-dog"><p>Location: <i>Nyamirambo, Kwamutwe</i></p></div>
-                                    <div class="col-12 hot-dog"><p>Name: <i>Johnson43</i></p></div>
-                                    <div class="col-12 hot-dog"><p>Items: <i>food&medecines</i></p></div>
-                                </div>
-                                <div class="col-xs-12 col-md-6" style="display: flex;align-items: center; justify-content: center;">
-                                    <a class="btn btn-outline-primary take" href="">Take</a>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-
-                <div id="products" class="grid-ho list-group">
-                        <div class="item  ">
-                            <div class="thumbnail">
-                                <img class="group list-group-image" src="../img/bg-img/order.jpg" alt="" />
-                                <div class="caption" style="display: table;">
-                                    <div class="col-12 hot-dog"><p>Location: <i>Nyamirambo, Kwamutwe</i></p></div>
-                                    <div class="col-12 hot-dog"><p>Name: <i>Johnson43</i></p></div>
-                                    <div class="col-12 hot-dog"><p>Items: <i>food&medecines</i></p></div>
-                                </div>
-                                <div class="col-xs-12 col-md-6" style="display: flex;align-items: center; justify-content: center;">
-                                    <a class="btn btn-outline-primary take" href="">Take</a>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-
-                <div id="products" class="grid-ho list-group">
-                        <div class="item  ">
-                            <div class="thumbnail">
-                                <img class="group list-group-image" src="../img/bg-img/order.jpg" alt="" />
-                                <div class="caption" style="display: table;">
-                                    <div class="col-12 hot-dog"><p>Location: <i>Nyamirambo, Kwamutwe</i></p></div>
-                                    <div class="col-12 hot-dog"><p>Name: <i>Johnson43</i></p></div>
-                                    <div class="col-12 hot-dog"><p>Items: <i>food&medecines</i></p></div>
-                                </div>
-                                <div class="col-xs-12 col-md-6" style="display: flex;align-items: center; justify-content: center;">
-                                    <a class="btn btn-outline-primary take" href="">Take</a>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-
-                <div id="products" class="grid-ho list-group">
-                        <div class="item  ">
-                            <div class="thumbnail">
-                                <img class="group list-group-image" src="../img/bg-img/order.jpg" alt="" />
-                                <div class="caption" style="display: table;">
-                                    <div class="col-12 hot-dog"><p>Location: <i>Nyamirambo, Kwamutwe</i></p></div>
-                                    <div class="col-12 hot-dog"><p>Name: <i>Johnson43</i></p></div>
-                                    <div class="col-12 hot-dog"><p>Items: <i>food&medecines</i></p></div>
-                                </div>
-                                <div class="col-xs-12 col-md-6" style="display: flex;align-items: center; justify-content: center;">
-                                    <a class="btn btn-outline-primary take" href="">Take</a>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-
-                <div id="products" class="grid-ho list-group">
-                        <div class="item  ">
-                            <div class="thumbnail">
-                                <img class="group list-group-image" src="../img/bg-img/order.jpg" alt="" />
-                                <div class="caption" style="display: table;">
-                                    <div class="col-12 hot-dog"><p>Location: <i>Nyamirambo, Kwamutwe</i></p></div>
-                                    <div class="col-12 hot-dog"><p>Name: <i>Johnson43</i></p></div>
-                                    <div class="col-12 hot-dog"><p>Items: <i>food&medecines</i></p></div>
-                                </div>
-                                <div class="col-xs-12 col-md-6" style="display: flex;align-items: center; justify-content: center;">
-                                    <a class="btn btn-outline-primary take" href="">Take</a>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-
-                <div id="products" class="grid-ho list-group">
-                        <div class="item  ">
-                            <div class="thumbnail">
-                                <img class="group list-group-image" src="../img/bg-img/order.jpg" alt="" />
-                                <div class="caption" style="display: table;">
-                                    <div class="col-12 hot-dog"><p>Location: <i>Nyamirambo, Kwamutwe</i></p></div>
-                                    <div class="col-12 hot-dog"><p>Name: <i>Johnson43</i></p></div>
-                                    <div class="col-12 hot-dog"><p>Items: <i>food&medecines</i></p></div>
-                                </div>
-                                <div class="col-xs-12 col-md-6" style="display: flex;align-items: center; justify-content: center;">
-                                    <a class="btn btn-outline-primary take" href="">Take</a>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-
-                <div id="products" class="grid-ho list-group">
-                        <div class="item  ">
-                            <div class="thumbnail">
-                                <img class="group list-group-image" src="../img/bg-img/order.jpg" alt="" />
-                                <div class="caption" style="display: table;">
-                                    <div class="col-12 hot-dog"><p>Location: <i>Nyamirambo, Kwamutwe</i></p></div>
-                                    <div class="col-12 hot-dog"><p>Name: <i>Johnson43</i></p></div>
-                                    <div class="col-12 hot-dog"><p>Items: <i>food&medecines</i></p></div>
-                                </div>
-                                <div class="col-xs-12 col-md-6" style="display: flex;align-items: center; justify-content: center;">
-                                    <a class="btn btn-outline-primary take" href="">Take</a>
-                                </div>
-                            </div>
-                        </div>
-                </div>
+        
 
 
               
