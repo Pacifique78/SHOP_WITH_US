@@ -1,6 +1,6 @@
 const testUser = [{
   name: 'test user',
-  email: 'test@ako.com',
+  email: 'kigalicoding@gmail.com',
   phoneNumber: '+250786427476',
   password: 'Testuser@78',
   confirmPassword: 'Testuser@78',
@@ -12,9 +12,9 @@ const testUser = [{
   password: 'Testuser@78',
   isBuyer: 'yes',
 }, {
-  code: '12345',
+  verifyCode: '12345',
 }, {
-  code: '123456',
+  verifyCode: '123456',
 }, {
   email: 'dammyuser@ako.com',
   password: 'Testuser@78',

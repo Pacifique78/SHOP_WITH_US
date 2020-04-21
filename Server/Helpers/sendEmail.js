@@ -6,7 +6,9 @@ import { Promise } from 'bluebird';
 const { EmailTemplate } = require('email-templates');
 
 const transporter = nodemailer.createTransport({
-  service: 'Gmail',
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
   auth: {
     user: process.env.GMAILACCOUNT,
     pass: process.env.GMAILPASSWORD,
@@ -32,7 +34,7 @@ const loadTemplate = (templateName, contexts) => {
   })));
 };
 
-export const sendResetPasswordEmail = (templateName, contexts) => {
+export const sendTemplatedMail = (templateName, contexts) => {
   loadTemplate(templateName, contexts).then((results) => Promise.all(results.map((result) => {
     sendMail({
       to: result.context.email,

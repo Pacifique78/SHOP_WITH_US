@@ -2,13 +2,8 @@ import hashPassword from '../Helpers/HashPossword';
 import { querry } from '../Db';
 import generateToken from '../Helpers/generateToken';
 import checkPassword from '../Helpers/checkPassword';
-import { sendResetPasswordEmail } from '../Helpers/sendEmail';
-
-const {
-  accountSid, authToken, serviceSid,
-} = process.env;
-// eslint-disable-next-line global-require
-const client = require('twilio')(accountSid, authToken);
+import { sendTemplatedMail } from '../Helpers/sendEmail';
+import generate from '../Helpers/generateVerificationCode';
 
 class User {
   async signUp(req, res) {
@@ -19,20 +14,23 @@ class User {
     const isAdmin = false;
     const status = 'inactive';
     const numberOfOrders = 0;
+    const code = generate();
     try {
       const createQuery = 'INSERT INTO users (name, email, phoneNumber, password, isAdmin, isBuyer, status, numberOfOrders) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *;';
       const result = await querry(createQuery, [name, email, phoneNumber, hashedPassword, isAdmin, isBuyer !== 'no', status, numberOfOrders]);
       const { id } = result[0];
-      client.verify.services(serviceSid)
-        .verifications
-        .create({ to: phoneNumber, channel: 'sms' });
-      const token = generateToken(id, email, phoneNumber, isAdmin, isBuyer !== 'no', status, numberOfOrders);
+      const token = generateToken(id, name, email, phoneNumber, isAdmin, isBuyer !== 'no', status, numberOfOrders, code);
+      const data = [{
+        ...result[0],
+        code,
+      }];
+      const { password: pass, ...userData } = result[0];
+      sendTemplatedMail('verify', data);
       res.status(201).json({
         status: 201,
         message: 'Account created...',
         data: {
-          id,
-          email,
+          ...userData,
           token,
         },
       });
@@ -45,46 +43,39 @@ class User {
   }
 
   async verifyPhoneNumber(req, res) {
-    const { code } = req.body;
-    const { id, phoneNumber } = req.tokenData;
-    try {
-      const verificationResult = await client.verify.services(serviceSid)
-        .verificationChecks
-        .create({ to: phoneNumber, code });
-      if (verificationResult.status === 'approved') {
-        const updateQuery = 'UPDATE users SET status=$1 where id=$2';
-        const values = ['active', id];
-        await querry(updateQuery, values);
-        return res.status(200).json({
-          status: 200,
-          message: 'Phone Number verified',
-        });
-      }
-      return res.status(400).json({
-        status: 400,
-        error: 'Phone must be verified first',
-      });
-    } catch (error) {
-      return res.status(400).json({
-        status: 400,
-        error,
+    const { verifyCode } = req.body;
+    const { id, code } = req.tokenData;
+    if (verifyCode === code.toString()) {
+      const updateQuery = 'UPDATE users SET status=$1 where id=$2 RETURNING *;';
+      const result = await querry(updateQuery, ['active', id]);
+      const { password, ...data } = result[0];
+      return res.status(200).json({
+        status: 200,
+        data,
+        message: 'Phone Number verified',
       });
     }
+    return res.status(400).json({
+      status: 400,
+      error: 'Wrong code, Please check again',
+    });
   }
 
   async signIn(req, res) {
-    const { email, password } = req.body;
+    const { email: mail, password: pass } = req.body;
     const selectQuery = 'SELECT * FROM users where email=$1 ;';
-    const rows = await querry(selectQuery, [email]);
-    if (rows[0] && checkPassword(password, rows[0].password) && rows[0].status === 'active') {
+    const rows = await querry(selectQuery, [mail]);
+    if (rows[0] && checkPassword(pass, rows[0].password) && rows[0].status === 'active') {
       const {
-        id, phonenumber, isadmin, isbuyer, status, numberoforders,
+        id, name, phonenumber, isadmin, isbuyer, status, numberoforders,
       } = rows[0];
-      const token = generateToken(id, email, phonenumber, isadmin, isbuyer, status, numberoforders);
+      const token = generateToken(id, name, mail, phonenumber, isadmin, isbuyer, status, numberoforders);
+      const { password, ...data } = rows[0];
       return res.status(200).json({
         status: 200,
         message: 'Logged in successfully',
         data: {
+          ...data,
           token,
         },
       });
@@ -108,7 +99,7 @@ class User {
         ...rows[0],
         url: `${process.env.forgotPasswordUrl}/${token}`,
       }];
-      sendResetPasswordEmail('forgotPassword', data);
+      sendTemplatedMail('forgotPassword', data);
       return res.status(200).json({
         status: 200,
         message: 'Email sent, Please check your inbox',
@@ -129,11 +120,28 @@ class User {
     const data = [{
       ...rows[0],
     }];
-    sendResetPasswordEmail('resetPassword', data);
+    sendTemplatedMail('resetPassword', data);
     return res.status(200).json({
       status: 200,
       message: 'Password reset successfully',
     });
+  }
+
+  async resendVerificationCode(req, res) {
+    const { id, code } = req.tokenData;
+    const selectQuery = 'SELECT * FROM users WHERE id=$1;';
+    const result = await querry(selectQuery, [id]);
+    if (result[0]) {
+      const data = [{
+        ...result[0],
+        code,
+      }];
+      sendTemplatedMail('verify', data);
+      return res.status(200).json({
+        status: 200,
+        message: 'Verification Code successfully resent',
+      });
+    }
   }
 }
 export default User;

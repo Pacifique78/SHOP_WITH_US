@@ -20,7 +20,7 @@ class Order {
   }
 
   async getAllOrders(req, res) {
-    const selectQuerry = 'SELECT * FROM orders ORDER BY id DESC;';
+    const selectQuerry = 'SELECT * FROM orders ORDER BY updatedon DESC;';
     const results = await querry(selectQuerry);
     if (results[0]) {
       return res.status(200).json({
@@ -55,11 +55,12 @@ class Order {
   }
 
   async viewMyOrders(req, res) {
-    const selectQuerry = 'SELECT * FROM orders WHERE buyerid=$1 ORDER BY id DESC;';
+    const selectQuerry = 'SELECT * FROM orders WHERE buyerid=$1 ORDER BY updatedon DESC;';
     const results = await querry(selectQuerry, [req.tokenData.id]);
     if (results[0]) {
       return res.status(200).json({
         status: 200,
+        name: req.tokenData.name,
         message: 'Order(s) successfully retreived',
         data: {
           results,
@@ -68,7 +69,8 @@ class Order {
     }
     return res.status(404).json({
       status: 404,
-      error: 'No pending order found',
+      name: req.tokenData.name,
+      error: 'There is no orders yet please create some orders',
     });
   }
 

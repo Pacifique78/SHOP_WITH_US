@@ -109,17 +109,19 @@
        <div class="container">
          <div class="col-md-12 d-flex justify-content-center p-30">
 
-            <form class="text-center border border-light " action="#!" style="padding: 10%;">
+            <form id="verify" class="text-center border border-light " action="#!" style="padding: 10%;">
 
                 <p class="h4 mb-4">verification code</p>
-                <input type="text" class="form-control " placeholder="21489">
+                <input type="text" class="form-control " placeholder="21489" id="code">
+                <div id="code-div"></div><br>
 
                 
                 <button class="btn btn-info btn-lg my-5" type="submit">verify</button>
                 <div class="d-flex justify-content-around">
                     <div>
 
-                        <a href=""><i>resend the code</i></a>
+                <a id="resend" href=""><i>resend the code</i></a>
+                <div id="message-div"></div><br>
                     </div>
                 </div>
 
@@ -186,6 +188,7 @@
     <!-- ***** Footer Area End ***** -->
 
     <!-- ******* All JS Files ******* -->
+    <script src="../js/connection/verifyConnect.js"></script>
     <!-- jQuery js -->
     <script src="../js/jquery.min.js"></script>
     <!-- Popper js -->

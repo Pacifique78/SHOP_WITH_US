@@ -121,14 +121,17 @@
                         <section>
                             <label>
                                 <p>Email</p>
-                                <input type="email" placeholder=" ">
+                                <input type="email" placeholder=" " id="forgot-email">
                                 <div class="border"></div>
+                                <div id="forgot-email-div" class="fields"></div>
                             </label>
+                            <div id="forgot-error"></div><br>
                             <button type="submit">Send email</button>
                         </section>
                         <footer>
                             <button type="button" class="forgotBtn">Back</button>
                         </footer>
+                        <div id="forgot-message"></div>
                     </form>
                     
                     <!-- Login form -->
@@ -139,7 +142,7 @@
                         </header>
                         <section>
                             <label>
-                                <p>Username</p>
+                                <p>Email</p>
                                 <input type="text" placeholder=" " id="login-email">
                                 <div class="border"></div>
                                 <div id="login-email-div" class="fields"></div>
@@ -172,7 +175,7 @@
                                 <div id="name-div" class="fields"></div>
                             </label>
                             <label>
-                                <p>Username</p>
+                                <p>Email</p>
                                 <input type="text" placeholder=" " id="email">
                                 <div class="border"></div>
                                 <div id="email-div" class="fields"></div>
@@ -273,7 +276,7 @@ At vero eos et accusam et justo duo dolores et ea rebum. Stet gubergren no sea t
     <!-- ***** Footer Area End ***** -->
 
     <!-- ******* All JS Files ******* -->
-    <script type="module" src="../js//connect.js"></script>
+    <script type="module" src="../js/connection/authConnect.js"></script>
     <!-- jQuery js -->
     <script src="../js/jquery.min.js"></script>
     <!-- Popper js -->

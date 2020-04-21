@@ -94,7 +94,7 @@ describe('Phone number verification', () => {
       .end((err, res) => {
         expect(res).to.have.status(400);
         expect(res.body).to.have.property('error');
-        expect(res.body.error).to.equal(' code  length must be at least 6 characters long');
+        expect(res.body.error).to.equal(' verifyCode  length must be at least 6 characters long');
         done();
       });
   });
@@ -244,6 +244,18 @@ describe('Reset password render html', () => {
     chai.request(app).get(`/auth/forgot-password/${process.env.adminToken}`)
       .end((err, res) => {
         expect(res).to.have.property('text');
+        done();
+      });
+  });
+});
+describe('Resend verification code', () => {
+  it('Should resend verification code to the user', (done) => {
+    chai.request(app).get('/auth/resend')
+      .set('Authorization', process.env.userToken)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body).to.have.property('message');
+        expect(res.body.message).to.equal('Verification Code successfully resent');
         done();
       });
   });
