@@ -225,14 +225,14 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard User</li>
+              <li class="breadcrumb-item active" id="dashboard-user">Dashboard User</li>
             </ol>
           </div>
 
           <!-- /.col -->
         </div>
         <section class="Porduct-grid">
-        <div class="container" style="padding-bottom: 35px; padding-top: 10px;">
+        <div id="container" class="container" style="padding-bottom: 35px; padding-top: 10px;">
             <div class="order-cont">
                <h3 class=" uza-btn btn-2 recent-orders" href>Recent Orders</h3> 
             </div>
@@ -273,78 +273,7 @@
             </div>
 
 
-            <ul class="auto-grid">
-                <div id="products" class="grid-ho list-group" style="background: white; border-bottom: 2px solid #007bff;">
-                        <div class="item  ">
-                            <div class="thumbnail">
-                                <img class="group list-group-image" src="../img/bg-img/spii.png" alt="" />
-                                <div class="caption" style="display: table;">
-                                    <div class="col-12 hot-dog"><p>Items: <i>Foods </i></p></div>
-                                    <div class="col-12 hot-dog"><p>time: <i>20 min ago</i></p></div>
-                                    
-                                </div>
-                                <div class="col-xs-12 " style="display: flex;align-items: center; justify-content: center;">
-                                    <a class="btn btn-outline-primary take" href=""data-toggle="modal" data-target="#exampleModal">edit</a>
-                                    <button type="button" class="  btn btn-outline-primary bg-red" data-dismiss="modal" style="margin-left: 26%; min-width: 100px;">Delete</button>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-
-                <div id="products" class="grid-ho list-group" style="background: white; border-bottom: 2px solid #007bff;">
-                        <div class="item  ">
-                            <div class="thumbnail">
-                                <img class="group list-group-image" src="../img/bg-img/spii.png" alt="" />
-                                <div class="caption" style="display: table;">
-                                    <div class="col-12 hot-dog"><p>Items: <i>Foods </i></p></div>
-                                    <div class="col-12 hot-dog"><p>time: <i>20 min ago</i></p></div>
-                                    
-                                </div>
-                                <div class="col-xs-12 " style="display: flex;align-items: center; justify-content: center;">
-                                    <a class="btn btn-outline-primary take" href=""data-toggle="modal" data-target="#exampleModal">edit</a>
-                                    <button type="button" class="  btn btn-outline-primary bg-red" data-dismiss="modal" style="margin-left: 26%; min-width: 100px;">Delete</button>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-
-
-                <div id="products" class="grid-ho list-group" style="background: white; border-bottom: 2px solid #007bff;">
-                        <div class="item  ">
-                            <div class="thumbnail">
-                                <img class="group list-group-image" src="../img/bg-img/spii.png" alt="" />
-                                <div class="caption" style="display: table;">
-                                    <div class="col-12 hot-dog"><p>Items: <i>Foods </i></p></div>
-                                    <div class="col-12 hot-dog"><p>time: <i>20 min ago</i></p></div>
-                                    
-                                </div>
-                                <div class="col-xs-12 " style="display: flex;align-items: center; justify-content: center;">
-                                    <a class="btn btn-outline-primary take" href=""data-toggle="modal" data-target="#exampleModal">edit</a>
-                                    <button type="button" class="  btn btn-outline-primary bg-red" data-dismiss="modal" style="margin-left: 26%; min-width: 100px;">Delete</button>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-
-                <div id="products" class="grid-ho list-group" style="background: white; border-bottom: 2px solid #007bff;">
-                        <div class="item  ">
-                            <div class="thumbnail">
-                                <img class="group list-group-image" src="../img/bg-img/spii.png" alt="" />
-                                <div class="caption" style="display: table;">
-                                    <div class="col-12 hot-dog"><p>Items: <i>Foods </i></p></div>
-                                    <div class="col-12 hot-dog"><p>time: <i>20 min ago</i></p></div>
-                                    
-                                </div>
-                                <div class="col-xs-12 " style="display: flex;align-items: center; justify-content: center;">
-                                    <a class="btn btn-outline-primary take" href=""data-toggle="modal" data-target="#exampleModal">edit</a>
-                                    <button type="button" class="  btn btn-outline-primary bg-red" data-dismiss="modal" style="margin-left: 26%; min-width: 100px;">Delete</button>
-                                </div>
-                            </div>
-                        </div>
-                </div>        
-
-
-              
+            <ul id="list" class="auto-grid">
             </ul>
 
 
@@ -377,7 +306,7 @@
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-
+<script src="../js/connection/buyerConnect.js"></script>
 <!-- jQuery -->
 <script src="../js/jquery.min.js"></script>
 <!-- Bootstrap -->

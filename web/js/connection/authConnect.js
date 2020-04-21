@@ -1,3 +1,4 @@
+const url = 'https://akoonlineshop.herokuapp.com';
 [...document.getElementsByTagName('input')].forEach((input) => {
   input.addEventListener('click', () => {
     [...document.getElementsByClassName('fields')].forEach((field) => {
@@ -21,7 +22,7 @@ document.getElementById('register').addEventListener('submit', async (e) => {
   const selected = document.getElementById('cont-typ');
   const isBuyer = selected.options[selected.selectedIndex].value;
 
-  const response = await fetch('https://akoonlineshop.herokuapp.com/auth/signup', {
+  const response = await fetch(`${url}/auth/signup`, {
     method: 'POST',
     headers: {
       Accept: 'application/json, text/plain, */*',
@@ -45,8 +46,8 @@ document.getElementById('register').addEventListener('submit', async (e) => {
       errorDiv.style.color = '#d84930';
     }
   } else {
-    sessionStorage.setItem('Authorization', `${json.token}`);
-    document.getElementById('login-btn-redirect').click();
+    sessionStorage.setItem('Authorization', `${json.data.token}`);
+    window.location.href = '../html/verify.html';
   }
 });
 
@@ -61,7 +62,7 @@ document.getElementById('login').addEventListener('submit', async (e) => {
   const email = document.getElementById('login-email').value;
   const password = document.getElementById('login-password').value;
 
-  const response = await fetch('https://akoonlineshop.herokuapp.com/auth/signin', {
+  const response = await fetch(`${url}/auth/signin`, {
     method: 'POST',
     headers: {
       Accept: 'application/json, text/plain, */*',
@@ -73,7 +74,6 @@ document.getElementById('login').addEventListener('submit', async (e) => {
   });
   const json = await response.json();
 
-  console.log(json);
   if (json.error) {
     if (json.status === 401) {
       const errorDiv = document.getElementById('login-error');
@@ -88,6 +88,51 @@ document.getElementById('login').addEventListener('submit', async (e) => {
     }
   } else {
     sessionStorage.setItem('Authorization', `${json.data.token}`);
-    document.getElementById('login').submit();
+    if (json.data.isbuyer) {
+      window.location.href = '../html/dashboard2.html';
+    } else {
+      window.location.href = '../html/dashboard.html';
+    }
+  }
+});
+
+document.getElementById('forgot').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  [...document.getElementsByClassName('fields')].forEach((field) => {
+    // eslint-disable-next-line no-param-reassign
+    field.style.display = 'none';
+  });
+  document.getElementById('forgot-error').style.display = 'none';
+  const email = document.getElementById('forgot-email').value;
+
+  const response = await fetch(`${url}/auth/forgot-password`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      email,
+    }),
+  });
+  const json = await response.json();
+
+  if (json.error) {
+    if (json.status === 404) {
+      const errorDiv = document.getElementById('forgot-error');
+      errorDiv.innerHTML = json.error;
+      errorDiv.style.display = 'inline';
+      errorDiv.style.color = '#d84930';
+    } else {
+      const errorDiv = document.getElementById(`forgot-${json.path}-div`);
+      errorDiv.innerHTML = json.error;
+      errorDiv.style.display = 'inline';
+      errorDiv.style.color = '#d84930';
+    }
+  } else {
+    const messageDiv = document.getElementById('forgot-message');
+    messageDiv.innerHTML = json.message;
+    messageDiv.style.display = 'inline';
+    messageDiv.style.color = '#28a745';
   }
 });

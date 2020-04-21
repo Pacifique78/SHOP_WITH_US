@@ -41,7 +41,7 @@ describe('Create a new order', () => {
         done();
       });
   });
-  it('Should return a success: second entry created', (done) => {
+  it('Should return a success: second order created', (done) => {
     chai.request(app).post('/orders')
       .set('Authorization', process.env.userToken)
       .send(testOrder[0])
@@ -124,11 +124,11 @@ describe('View my orders', () => {
   });
   it('Should should not return an order: no order found', (done) => {
     chai.request(app).get('/myorders')
-      .set('Authorization', process.env.userToken2)
+      .set('Authorization', process.env.adminToken)
       .end((err, res) => {
         expect(res).to.have.status(404);
         expect(res.body).to.have.property('error');
-        expect(res.body.error).to.equal('No pending order found');
+        expect(res.body.error).to.equal('There is no orders yet please create some orders');
         done();
       });
   });
@@ -187,7 +187,7 @@ describe('Delete an order', () => {
       });
   });
 });
-describe('Pereform order', () => {
+describe('Perform order', () => {
   it('Should give the order price', (done) => {
     chai.request(app).post('/price_description')
       .set('Authorization', process.env.adminToken)
