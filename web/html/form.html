@@ -255,7 +255,8 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label></label>
-                        <input type="text" class="form-control" placeholder="sector" >
+                        <input id="quantity" type="text" class="form-control" placeholder="sector" >
+                        <div id="quantity-div" class="fields"></div><br>
                       </div>
                     </div>
                   </div>
@@ -264,7 +265,8 @@
                       <!-- textarea -->
                       <div class="form-group">
                         <label>more info on location</label>
-                        <textarea class="form-control" rows="3" placeholder="kwa mutwe muri 100m uvuye kumuhanda ..."></textarea>
+                        <textarea id="location" class="form-control" rows="3" placeholder="kwa mutwe muri 100m uvuye kumuhanda ..."></textarea>
+                        <div id="location-div" class="fields"></div><br>
                       </div>
                     </div>
 
@@ -274,10 +276,12 @@
                   <div class="form-group">
                     <label class="col-form-label" for="inputSuccess"><i class=""></i>product name</label>
                     <input type="text" class="form-control" id="inputSuccess" placeholder="Umuceri">
+                    <div id="productName-div" class="fields"></div><br>
                   </div>
                   <div class="form-group">
                     <label>Product desc</label>
-                        <textarea class="form-control" rows="3" placeholder="ibiro bitatu bya tanzania muremure ..."></textarea>
+                        <textarea id="description" class="form-control" rows="3" placeholder="ibiro bitatu bya tanzania muremure ..."></textarea>
+                        <div id="description-div" class="fields"></div><br>
                   </div>
                   <!--<div class="row">
                     <div class="col-sm-6">
@@ -293,8 +297,8 @@
                       </div>
                     </div>
                   </div>-->
-
-                  <button type="button" class="btn btn-outline-primary">Place my order</button>
+                  <div id="error"></div><br>
+                  <button id="place-order" type="button" class="btn btn-outline-primary">Place my order</button>
 
                 </form>
               </div>
@@ -327,7 +331,7 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
+<script src="../js/connection//formConnect.js"></script>
 <!-- jQuery -->
 <script src="../js/jquery.min.js"></script>
 <!-- Bootstrap 4 -->

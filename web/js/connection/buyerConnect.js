@@ -11,7 +11,7 @@ window.addEventListener('load', async (e) => {
   });
   const json = await response.json();
 
-  document.getElementById('dashboard-user').innerHTML = json.name || 'Dashboard User';
+  document.getElementById('user').innerHTML = json.name || 'User Name';
   if (json.error) {
     if (json.status === 404) {
       const containerDiv = document.getElementById('container');
