@@ -183,5 +183,21 @@ class Order {
       data: updatedOrder,
     });
   }
+
+  async deleteMyOrder(req, res) {
+    const orderId = parseInt(req.params.orderId, 10);
+    const buyerId = req.tokenData.id;
+    const selectQuerry = 'SELECT * FROM orders WHERE id=$1 AND buyerid=$2;';
+    const result = await querry(selectQuerry, [orderId, buyerId]);
+    if (result[0]) {
+      const deleteQuerry = 'DELETE FROM orders WHERE id=$1;';
+      await querry(deleteQuerry, [orderId]);
+      return res.status(204).json();
+    }
+    return res.status(404).json({
+      status: 404,
+      error: 'Order not found',
+    });
+  }
 }
 export default Order;

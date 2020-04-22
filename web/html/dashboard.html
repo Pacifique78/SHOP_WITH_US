@@ -163,7 +163,7 @@
           <img src="../img/bg-img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Johnson</a>
+          <a href="#" class="d-block" id="user">Johnson</a>
         </div>
       </div>
 
@@ -232,7 +232,7 @@
           <!-- /.col -->
         </div>
         <section class="Porduct-grid">
-        <div class="container" style="padding-bottom: 35px; padding-top: 10px;">
+        <div id="container" class="container" style="padding-bottom: 35px; padding-top: 10px;">
             <div class="order-cont">
                <h3 class=" uza-btn btn-2 recent-orders" href>Recent Orders</h3> 
             </div>
@@ -272,73 +272,8 @@
             </div>
 
 
-            <ul class="auto-grid">
-                <div id="products" class="grid-ho list-group" style="background: white; border-bottom: 2px solid #007bff;">
-                        <div class="item  ">
-                            <div class="thumbnail">
-                                <img class="group list-group-image" src="../img/bg-img/spii.png" alt="" />
-                                <div class="caption" style="display: table;">
-                                    <div class="col-12 hot-dog"><p>Items: <i>Foods </i></p></div>
-                                    <div class="col-12 hot-dog"><p>time: <i>20 min ago</i></p></div>
-                                    
-                                </div>
-                                <div class="col-xs-12 col-md-6" style="display: flex;align-items: center; justify-content: center;">
-                                    <a class="btn btn-outline-primary take" href=""data-toggle="modal" data-target="#exampleModal">Deliver</a>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-                <div id="products" class="grid-ho list-group" style="background: white; border-bottom: 2px solid #007bff;">
-                        <div class="item  ">
-                            <div class="thumbnail">
-                                <img class="group list-group-image" src="../img/bg-img/spii.png" alt="" />
-                                <div class="caption" style="display: table;">
-                                    <div class="col-12 hot-dog"><p>Items: <i>Foods </i></p></div>
-                                    <div class="col-12 hot-dog"><p>time: <i>20 min ago</i></p></div>
-                                    
-                                </div>
-                                <div class="col-xs-12 col-md-6" style="display: flex;align-items: center; justify-content: center;">
-                                    <a class="btn btn-outline-primary take" href="" data-toggle="modal" data-target="#exampleModal">Deliver</a>
-                                </div>
-                            </div>
-                        </div>
-                </div>
+            <ul id="list" class="auto-grid">
                 
-                <div id="products" class="grid-ho list-group" style="background: white; border-bottom: 2px solid #007bff;">
-                        <div class="item  ">
-                            <div class="thumbnail">
-                                <img class="group list-group-image" src="../img/bg-img/spii.png" alt="" />
-                                <div class="caption" style="display: table;">
-                                    <div class="col-12 hot-dog"><p>Items: <i>Foods </i></p></div>
-                                    <div class="col-12 hot-dog"><p>time: <i>20 min ago</i></p></div>
-                                    
-                                </div>
-                                <div class="col-xs-12 col-md-6" style="display: flex;align-items: center; justify-content: center;">
-                                    <a class="btn btn-outline-primary take" href="" data-toggle="modal" data-target="#exampleModal">Deliver</a>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-                <div id="products" class="grid-ho list-group" style="background: white; border-bottom: 2px solid #007bff;">
-                        <div class="item  ">
-                            <div class="thumbnail">
-                                <img class="group list-group-image" src="../img/bg-img/spii.png" alt="" />
-                                <div class="caption" style="display: table;">
-                                    <div class="col-12 hot-dog"><p>Items: <i>Foods </i></p></div>
-                                    <div class="col-12 hot-dog"><p>time: <i>20 min ago</i></p></div>
-                                    
-                                </div>
-                                <div class="col-xs-12 col-md-6" style="display: flex;align-items: center; justify-content: center;">
-                                    <a class="btn btn-outline-primary take" href="" data-toggle="modal" data-target="#exampleModal">Deliver</a>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-                
-
-        
-
-
               
             </ul>
 
@@ -372,7 +307,7 @@
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-
+<script src="../js/connection/deliverConnect.js"></script>
 <!-- jQuery -->
 <script src="../js/jquery.min.js"></script>
 <!-- Bootstrap -->
