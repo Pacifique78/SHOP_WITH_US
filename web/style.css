@@ -1349,8 +1349,10 @@ outline-width: 0;
 
 
 .clsolo{
-height: 100vh;
-width: 100vw;
+min-height: 300px;
+height: auto;
+padding-top: 10%;
+width: 100%
 background: #fff;
 display: -webkit-box;
 display: flex;
