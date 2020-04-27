@@ -30,7 +30,7 @@ window.addEventListener('load', async (e) => {
                                 <img class="group list-group-image" src="../img/bg-img/spii.png" alt="" />
                                 <div class="caption" style="display: table;">
                                     <div class="col-12 hot-dog"><p>Items: <i>${result.productName} </i></p></div>
-                                    <div class="col-12 hot-dog"><p>time: <i>${result.updatedon}</i></p></div>+                                    
+                                    <div class="col-12 hot-dog"><p>time: <i>${result.updatedon}</i></p></div>
                                 </div>
                                 <div class="col-xs-12 col-md-6" style="display: flex;align-items: center; justify-content: center;">
                                     <a class="btn btn-outline-primary take" href=""data-toggle="modal" data-target="#exampleModal">Deliver</a>
