@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>Ako</title>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="../fonts/fontawesome-free/css/all.min.css">
+  <!-- IonIcons -->
+  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+
+</head>
+
+
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+
+      </ul>
+
+      <!-- SEARCH FORM -->
+      <form class="form-inline ml-3">
+        <div class="input-group input-group-sm">
+          <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-navbar" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+
+        <!-- Notifications Dropdown Menu -->
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="far fa-bell"></i>
+            <span class="badge badge-warning navbar-badge">15</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <span class="dropdown-item dropdown-header">15 Notifications</span>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-envelope mr-2"></i> 4 new messages
+              <span class="float-right text-muted text-sm">3 mins</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-users mr-2"></i> 8 friend requests
+              <span class="float-right text-muted text-sm">12 hours</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-file mr-2"></i> 3 new reports
+              <span class="float-right text-muted text-sm">2 days</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+          </div>
+        </li>
+        <button class="btn bg-red btn-sm" style="margin-right:4%; height: 35px; "><a href="logout">Logout</a></button>
+
+      </ul>
+    </nav>
+
+    <aside class="main-sidebar sidebar-light-primary elevation-4">
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-link">
+
+        Home
+      </a>
+
+      <!-- Sidebar -->
+      <div class="sidebar-light-primary">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="../img/bg-img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          </div>
+          <div class="info">
+            <a href="#" class="d-block" id="user">Johnson</a>
+          </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+            <li class="nav-item">
+              <a href="form.html" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                  Users
+
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="form.html" class="nav-link">
+                <i class="nav-icon fas fa-shopping-cart"></i>
+                <p>
+                  Orders
+
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="form.html" class="nav-link">
+                <i class="nav-icon fas fa-gear"></i>
+                <p>
+                  Settings
+
+                </p>
+              </a>
+            </li>
+
+
+
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+
+          <section class="Porduct-grid">
+            <div class="container" style="padding-bottom: 35px; padding-top: 10px;">
+              <div class="Wrapper">
+
+                <div role="tablist" data-items="4" class="Tabs Tabs--fullWidth" aria-label="transaction-type-filter">
+                  <button class="Tabs-tab is-current" role="tab" aria-selected="true">
+                    All
+                  </button>
+                  <button class="Tabs-tab" role="tab" aria-selected="false">
+                    A
+                  </button>
+                  <button class="Tabs-tab " role="tab" aria-selected="false">
+                    B
+                  </button>
+                  <button class="Tabs-tab" role="tab" aria-selected="false">
+                    C
+                  </button>
+                  <button class="Tabs-tab" role="tab" aria-selected="false">
+                    D
+                  </button>
+                  <button class="Tabs-tab is-disabled" role="tab" aria-selected="false">
+                    E
+                  </button>
+                  <button class="Tabs-tab" role="tab" aria-selected="false">
+                    F
+                  </button>
+                  <button class="Tabs-tab" role="tab" aria-selected="false">
+                    G
+                  </button>
+                  <button class="Tabs-tab" role="tab" aria-selected="false">
+                    H
+                  </button>
+                  <button class="Tabs-tab " role="tab" aria-selected="false">
+                    I
+                  </button>
+                  <button class="Tabs-tab " role="tab" aria-selected="false">
+                    J
+                  </button>
+                  <button class="Tabs-tab " role="tab" aria-selected="false">
+                    K
+                  </button>
+                  <button class="Tabs-tab " role="tab" aria-selected="false">
+                    L
+                  </button>
+                  <button class="Tabs-tab" role="tab" aria-selected="false">
+                    M
+                  </button>
+                  <button class="Tabs-tab" role="tab" aria-selected="false">
+                    N
+                  </button>
+                  <button class="Tabs-tab" role="tab" aria-selected="false">
+                    O
+                  </button>
+                  <button class="Tabs-tab" role="tab" aria-selected="false">
+                    P
+                  </button>
+                  <button class="Tabs-tab" role="tab" aria-selected="false">
+                    Q
+                  </button>
+                  <button class="Tabs-tab" role="tab" aria-selected="false">
+                    R
+                  </button>
+                  <button class="Tabs-tab" role="tab" aria-selected="false">
+                    S
+                  </button>
+                  <button class="Tabs-tab" role="tab" aria-selected="false">
+                    T
+                  </button>
+                  <button class="Tabs-tab" role="tab" aria-selected="false">
+                    U
+                  </button>
+                  <button class="Tabs-tab" role="tab" aria-selected="false">
+                    V
+                  </button>
+                  <button class="Tabs-tab" role="tab" aria-selected="false">
+                    W
+                  </button>
+                  <button class="Tabs-tab " role="tab" aria-selected="false">
+                    X
+                  </button>
+                  <button class="Tabs-tab " role="tab" aria-selected="false">
+                    Y
+                  </button>
+                  <button class="Tabs-tab " role="tab" aria-selected="false">
+                    Z
+                  </button>
+                </div>
+
+                <table class="Table" style="margin-top: 16px; width: 100%;">
+
+                </table>
+
+              </div>
+
+              <div class="row">
+                <div class="col-lg-3  col-sm-12 item-entry mb-3">
+                  <div class="container">
+                    <div class="card">
+                      <img src="../img/bg-img/spii.png" alt="">
+                      <h1>Kalisa47</h1>
+                      <h2>Deliver</h2>
+                      <div class="row">
+                        <div class="container">
+                          <span class="fa fa-star"></span>
+                          <span class="fa fa-star"></span>
+                          <span class="fa fa-star"></span>
+                          <span class="fa fa-star"></span>
+                          <span class="fas fa-star-half-alt"> 4.6</span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="container " style="padding-top:6%;">
+                          <a class="button btm-btn bg-blue" href="" target="_blank"><span class="fa fa-envelope"></span></a>
+                          <a class="button btm-btn2 bg-blue" href="" target="_blank"><span class="fa fa-gear"></span></a>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3  col-sm-12 item-entry mb-3">
+                  <div class="container">
+                    <div class="card">
+                      <img src="../img/bg-img/spii.png" alt="">
+                      <h1>Kalisa47</h1>
+                      <h2>Buyer</h2>
+                      <div class="row">
+                        <div class="container">
+                          <span class="fa fa-chart-line"></span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="container " style="padding-top:6%;">
+                          <a class="button btm-btn bg-blue" href="" target="_blank"><span class="fa fa-envelope"></span></a>
+                          <a class="button btm-btn2 bg-blue" href="" target="_blank"><span class="fa fa-gear"></span></a>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="col-lg-3  col-sm-12 item-entry mb-3">
+                  <div class="container">
+                    <div class="card">
+                      <img src="../img/bg-img/spii.png" alt="">
+                      <h1>Josh47</h1>
+                      <h2>Deliver</h2>
+                      <div class="row">
+                        <div class="container">
+                          <span class="fa fa-star"></span>
+                          <span class="fa fa-star"></span>
+                          <span class="fa fa-star"></span>
+                          <span class="fa fa-star"></span>
+                          <span class="fas fa-star-half-alt"> 4.6</span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="container " style="padding-top:6%;">
+                          <a class="button btm-btn bg-blue" href="" target="_blank"><span class="fa fa-envelope"></span></a>
+                          <a class="button btm-btn2 bg-blue" href="" target="_blank"><span class="fa fa-gear"></span></a>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3  col-sm-12 item-entry mb-3">
+                  <div class="container">
+                    <div class="card">
+                      <img src="../img/bg-img/spii.png" alt="">
+                      <h1>Josh47</h1>
+                      <h2>Buyer</h2>
+                      <div class="row">
+                        <div class="container">
+                          <span class="fa fa-chart-line"></span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="container " style="padding-top:6%;">
+                          <a class="button btm-btn bg-blue" href="" target="_blank"><span class="fa fa-envelope"></span></a>
+                          <a class="button btm-btn2 bg-blue" href="" target="_blank"><span class="fa fa-gear"></span></a>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+              </div>
+          </section><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+
+      <!-- Main content -->
+
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+      <strong>&copy; 2020 Ako
+        <div class="float-right d-none d-sm-inline-block">
+
+        </div>
+    </footer>
+  </div>
+  <!-- ./wrapper -->
+
+  <!-- REQUIRED SCRIPTS -->
+  <script src="../js/connection/deliverConnect.js"></script>
+  <!-- jQuery -->
+  <script src="../js/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE -->
+  <script src="../js/adminlte.js"></script>
+
+  <!-- OPTIONAL SCRIPTS -->
+  <script src="../js/Chart.min.js"></script>
+  <script src="../js/demo.js"></script>
+  <script src="../js/dashboard3.js"></script>
+</body>
+
+</html>
