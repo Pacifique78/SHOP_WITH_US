@@ -3,7 +3,9 @@ const testOrder = [
     productName: 'sugar',
     description: 'Kabuye',
     quantity: '2kg',
-    location: 'Kimironko KG 133 St',
+    location: 'Kimironko',
+    street: 'KG 133 St',
+    locationDescription: 'Kwisoko',
   }, {
     productName: '',
     description: 'Kabuye',
