@@ -8,7 +8,7 @@ const { EmailTemplate } = require('email-templates');
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
   port: 465,
-  secure: false,
+  secure: true,
   auth: {
     user: process.env.GMAILACCOUNT,
     pass: process.env.GMAILPASSWORD,

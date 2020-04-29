@@ -54,7 +54,7 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <button class="btn bg-red btn-sm" style="margin-right:4%; "><a href="logout">Logout</a></button>
+      <button id="logout" class="btn bg-red btn-sm" style="margin-right:4%; "><a href="login.html">Logout</a></button>
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
@@ -194,19 +194,24 @@
                         <img src="../img/bg-img/spii.png" style="width: 30vw; height: 16vh;">
                       </div>
                       <div class="product-details col-sm-8 mod-det">
+                        <p id="id" style="display: none;"></p>
+                        <h6>User Info:</h6>
+                        <p id="userSummary"></p>
                         <h6>Locaton:</h6>
-                        <p>Nyamirambo, kwamutw</p>
-                        <h6>Product name</h6>
-                        <p>isukali. 10Kg</p>
-                        <h6>Fee</h6>
-                        <input type="text" name="" value="500" style="border:none;">
-
+                        <p id="locationSummary"></p>
+                        <h6>Product Info:</h6>
+                        <p id="productSummary"></p>
+                        <h6>Posted on</h6>
+                        <p id="productDate"></p>
+                        <h6>Fee (Fill the amount here)</h6>
+                        <input id="price" type="text" name="" placeholder="e.g: 500" style="border:none;">
+                        <div id="price-div"></div>
                       </div>
                     </div>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary bg-red" data-dismiss="modal">leave</button>
-                    <button type="button" class="btn btn-primary"> Take offer</button>
+                    <button id="deliver" type="button" class="btn btn-primary"> Take offer</button>
                   </div>
                 </div>
               </div>

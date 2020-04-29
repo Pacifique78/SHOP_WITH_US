@@ -4,14 +4,14 @@ import { querry } from '../Db';
 class Order {
   async createOrder(req, res) {
     const {
-      productName, description, quantity, location,
+      productName, description, quantity, location, street, locationDescription,
     } = req.body;
-    const { id: buyerId } = req.tokenData;
+    const { id: buyerId, name, phoneNumber } = req.tokenData;
     const createdOn = moment().format('LLL');
     const state = 'pending';
-    const insertQuery = `INSERT INTO orders (buyerId, productName, description, quantity, location, createdOn, updatedOn, state)
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *;`;
-    const result = await querry(insertQuery, [buyerId, productName, description, quantity, location, createdOn, createdOn, state]);
+    const insertQuery = `INSERT INTO orders (buyerId, buyerName, buyerPhone, productName, description, quantity, location, street, locationDesc, createdOn, updatedOn, state)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *;`;
+    const result = await querry(insertQuery, [buyerId, name, phoneNumber, productName, description, quantity, location, street, locationDescription, createdOn, createdOn, state]);
     res.status(201).json({
       status: 201,
       message: 'Order created successfully',
@@ -25,6 +25,7 @@ class Order {
     if (results[0]) {
       return res.status(200).json({
         status: 200,
+        name: req.tokenData.name,
         message: 'Orders successfully retreived',
         data: {
           results,
@@ -33,6 +34,7 @@ class Order {
     }
     return res.status(404).json({
       status: 404,
+      name: req.tokenData.name,
       error: 'No pending order found',
     });
   }
@@ -140,11 +142,13 @@ class Order {
       });
     }
     const {
-      buyerid, productname, description, quantity,
+      buyerid, productname, description, quantity, location, street, locationdesc,
     } = orderFound[0];
     const delivererId = req.tokenData.id;
-    const insertQuery = 'INSERT INTO price_descriptions (orderId, buyerId, delivererId, productName, description, quantity, price) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;';
-    const result = await querry(insertQuery, [orderId, buyerid, delivererId, productname, description, quantity, price]);
+    const updateQuery = 'UPDATE orders SET state=$1 WHERE id=$2';
+    await querry(updateQuery, ['Taken', orderId]);
+    const insertQuery = 'INSERT INTO price_descriptions (orderId, buyerId, delivererId, productName, description, quantity, location, price) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *;';
+    const result = await querry(insertQuery, [orderId, buyerid, delivererId, productname, description, quantity, `${location} ${street} ${locationdesc}`, price]);
     return res.status(200).json({
       status: 200,
       message: 'Price provided successfully',
