@@ -18,10 +18,14 @@ export const createTables = () => {
     orders(
         id serial,
         buyerId integer NOT NULL,
+        buyerName character varying(255) NOT NULL,
+        buyerPhone character varying(255) NOT NULL,
         productName character varying(255) NOT NULL,
         description character varying(255) NOT NULL,
         quantity character varying(255) NOT NULL,
         location character varying(255) NOT NULL,
+        street character varying(255),
+        locationDesc character Varying(1024) NOT NULL,
         createdOn character varying(255) NOT NULL,
         updatedOn character varying(255) NOT NULL,
         state character varying(255) NOT NULL,
@@ -36,6 +40,7 @@ export const createTables = () => {
         productName character varying(255) NOT NULL,
         description character varying(255) NOT NULL,
         quantity character varying(255) NOT NULL,
+        location character varying(1024) NOT NULL,
         price integer NOT NULL,
         PRIMARY KEY(id)
     );

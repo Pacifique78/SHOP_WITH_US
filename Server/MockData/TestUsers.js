@@ -17,7 +17,7 @@ const testUser = [{
   verifyCode: '123456',
 }, {
   email: 'dammyuser@ako.com',
-  password: 'Testuser@78',
+  password: 'Colvert1!',
 }, {
   email: 'fakeuser@gmail.com',
   password: 'password',
