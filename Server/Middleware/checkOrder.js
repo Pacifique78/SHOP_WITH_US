@@ -7,8 +7,6 @@ const checkOrder = (req, res, next) => {
     description: Joi.string().required(),
     quantity: Joi.string().required(),
     location: Joi.string().required(),
-    street: Joi.string().allow(''),
-    locationDescription: Joi.string().required(),
   });
   const schemasValidation = Joi.validate(req.body, orderSchema);
   validationHelper(res, schemasValidation, next);
