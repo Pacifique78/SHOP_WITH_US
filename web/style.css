@@ -1,6 +1,9 @@
 /* *********************************************
+
 *********************************************
+
 [Tables of CSS Content]
+
 + body
   
     - 02.0 Spacing CSS
@@ -24,6 +27,7 @@
     - 20.0 Contact CSS
   ---------------------------------------------
   [Color Codes]
+
   $heading: #303030; [Heading Color]
   $text: #707070; [Text Color]
   $bg-gray: #e7f2fd; [Gray Background]
@@ -33,6 +37,7 @@
   $border: #ebebeb; [Border Color]
   $hover: #1583e9; [Hover Color]
   $secondary: #a6a6a6; [Secondary Color]
+
   ---------------------------------------------
   [Font Family: 'HK Grotesk']
 --------------------------------------------- */
@@ -1348,7 +1353,7 @@ min-height: 300px;
 height: auto;
 padding-top: 10%;
 padding-bottom:20%;
-width: 100%;
+width: 100%
 background: #fff;
 display: -webkit-box;
 display: flex;
