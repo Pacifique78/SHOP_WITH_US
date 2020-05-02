@@ -17,9 +17,7 @@ document.getElementById('place-order').addEventListener('click', async (e) => {
   const productName = document.getElementById('inputSuccess').value;
   const description = document.getElementById('description').value;
   const quantity = document.getElementById('quantity').value;
-  const locationDescription = document.getElementById('locationDescription').value;
   const location = document.getElementById('location').value;
-  const street = document.getElementById('street').value;
   const response = await fetch(`${url}/orders`, {
     method: 'POST',
     headers: {
@@ -28,10 +26,11 @@ document.getElementById('place-order').addEventListener('click', async (e) => {
       'content-type': 'application/json',
     },
     body: JSON.stringify({
-      productName, description, quantity, location, street, locationDescription,
+      productName, description, quantity, location,
     }),
   });
   const json = await response.json();
+
   if (json.error) {
     if (json.status === 400) {
       const errorDiv = document.getElementById(`${json.path}-div`);
@@ -39,7 +38,10 @@ document.getElementById('place-order').addEventListener('click', async (e) => {
       errorDiv.style.display = 'inline';
       errorDiv.style.color = '#d84930';
     } else {
-      window.location.href = '../html/error.html';
+      const errorDiv = document.getElementById('error');
+      errorDiv.innerHTML = json.error;
+      errorDiv.style.display = 'inline';
+      errorDiv.style.color = '#d84930';
     }
   } else {
     window.location.href = '../html/dashboard2.html';
