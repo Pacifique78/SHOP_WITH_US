@@ -74,7 +74,7 @@
             <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
           </div>
         </li>
-        <button class="btn bg-red btn-sm" style="margin-right:4%; height: 35px; "><a href="logout">Logout</a></button>
+        <button id="logout" class="btn bg-red btn-sm" style="margin-right:4%; height: 35px; "><a href="login.html">Logout</a></button>
 
       </ul>
     </nav>
@@ -101,8 +101,8 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-            <li class="nav-item">
-              <a href="form.html" class="nav-link">
+            <li id="users" class="nav-item">
+              <a class="nav-link">
                 <i class="nav-icon fas fa-user"></i>
                 <p>
                   Users
@@ -110,8 +110,8 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="form.html" class="nav-link">
+            <li id="orders" class="nav-item">
+              <a class="nav-link">
                 <i class="nav-icon fas fa-shopping-cart"></i>
                 <p>
                   Orders
@@ -150,7 +150,7 @@
               <div class="Wrapper">
 
                 <div role="tablist" data-items="4" class="Tabs Tabs--fullWidth" aria-label="transaction-type-filter">
-                  <button class="Tabs-tab is-current" role="tab" aria-selected="true">
+                  <button id="all" class="Tabs-tab is-current" role="tab" aria-selected="true">
                     All
                   </button>
                   <button class="Tabs-tab" role="tab" aria-selected="false">
@@ -239,105 +239,8 @@
 
               </div>
 
-              <div class="row">
-                <div class="col-lg-3  col-sm-12 item-entry mb-3">
-                  <div class="container">
-                    <div class="card">
-                      <img src="../img/bg-img/spii.png" alt="">
-                      <h1>Kalisa47</h1>
-                      <h2>Deliver</h2>
-                      <div class="row">
-                        <div class="container">
-                          <span class="fa fa-star"></span>
-                          <span class="fa fa-star"></span>
-                          <span class="fa fa-star"></span>
-                          <span class="fa fa-star"></span>
-                          <span class="fas fa-star-half-alt"> 4.6</span>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="container " style="padding-top:6%;">
-                          <a class="button btm-btn bg-blue" href="" target="_blank"><span class="fa fa-envelope"></span></a>
-                          <a class="button btm-btn2 bg-blue" href="" target="_blank"><span class="fa fa-gear"></span></a>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3  col-sm-12 item-entry mb-3">
-                  <div class="container">
-                    <div class="card">
-                      <img src="../img/bg-img/spii.png" alt="">
-                      <h1>Kalisa47</h1>
-                      <h2>Buyer</h2>
-                      <div class="row">
-                        <div class="container">
-                          <span class="fa fa-chart-line"></span>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="container " style="padding-top:6%;">
-                          <a class="button btm-btn bg-blue" href="" target="_blank"><span class="fa fa-envelope"></span></a>
-                          <a class="button btm-btn2 bg-blue" href="" target="_blank"><span class="fa fa-gear"></span></a>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="col-lg-3  col-sm-12 item-entry mb-3">
-                  <div class="container">
-                    <div class="card">
-                      <img src="../img/bg-img/spii.png" alt="">
-                      <h1>Josh47</h1>
-                      <h2>Deliver</h2>
-                      <div class="row">
-                        <div class="container">
-                          <span class="fa fa-star"></span>
-                          <span class="fa fa-star"></span>
-                          <span class="fa fa-star"></span>
-                          <span class="fa fa-star"></span>
-                          <span class="fas fa-star-half-alt"> 4.6</span>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="container " style="padding-top:6%;">
-                          <a class="button btm-btn bg-blue" href="" target="_blank"><span class="fa fa-envelope"></span></a>
-                          <a class="button btm-btn2 bg-blue" href="" target="_blank"><span class="fa fa-gear"></span></a>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3  col-sm-12 item-entry mb-3">
-                  <div class="container">
-                    <div class="card">
-                      <img src="../img/bg-img/spii.png" alt="">
-                      <h1>Josh47</h1>
-                      <h2>Buyer</h2>
-                      <div class="row">
-                        <div class="container">
-                          <span class="fa fa-chart-line"></span>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="container " style="padding-top:6%;">
-                          <a class="button btm-btn bg-blue" href="" target="_blank"><span class="fa fa-envelope"></span></a>
-                          <a class="button btm-btn2 bg-blue" href="" target="_blank"><span class="fa fa-gear"></span></a>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-
-
-
-
+              <div class="row" id="list">
+                
               </div>
           </section><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -367,7 +270,7 @@
   <!-- ./wrapper -->
 
   <!-- REQUIRED SCRIPTS -->
-  <script src="../js/connection/deliverConnect.js"></script>
+  <script src="../js/connection/adminConnect.js"></script>
   <!-- jQuery -->
   <script src="../js/jquery.min.js"></script>
   <!-- Bootstrap -->

@@ -73,7 +73,6 @@ document.getElementById('login').addEventListener('submit', async (e) => {
     }),
   });
   const json = await response.json();
-
   if (json.error) {
     if (json.status === 401) {
       const errorDiv = document.getElementById('login-error');
@@ -88,7 +87,10 @@ document.getElementById('login').addEventListener('submit', async (e) => {
     }
   } else {
     sessionStorage.setItem('Authorization', `${json.data.token}`);
-    if (json.data.isbuyer) {
+
+    if (json.data.isadmin) {
+      window.location.href = '../html/Admin.html';
+    } else if (json.data.isbuyer && !json.data.isadmin) {
       window.location.href = '../html/dashboard2.html';
     } else {
       window.location.href = '../html/dashboard.html';

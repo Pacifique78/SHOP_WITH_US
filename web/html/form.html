@@ -143,22 +143,21 @@
   </nav>
   <!-- /.navbar -->
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-light-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="dashboard.html" class="brand-link">
-
-     Home
+    <a href="../../index.html" class="brand-link">
+     
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar-light-primary">
+    <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="../img/bg-img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block" id="user">Johnson</a>
+          <a href="#" class="d-block">Johnson</a>
         </div>
       </div>
       <!-- Sidebar Menu -->
@@ -185,15 +184,15 @@
                   <p>infos@stud.com</p>
                 </a>
               </li>
-
+              
             </ul>
           </li>
           <li class="nav-item">
-            <a href="form.html" class="nav-link">
+            <a href="pages/forms/general.html" class="nav-link">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
                 Shop
-
+                
               </p>
             </a>
           </li>
@@ -247,15 +246,15 @@
                     <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
-                        <label>location</label>
-                        <input type="text" class="form-control" placeholder="District.">
+                        <label>District/Sector</label>
+                        <input type="text" id="location" class="form-control" placeholder="District/Sector.">
+                        <div id="location-div" class="fields"></div><br>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label></label>
-                        <input id="quantity" type="text" class="form-control" placeholder="sector" >
-                        <div id="quantity-div" class="fields"></div><br>
+                        <label>Street </label>
+                        <input id="street" type="text" class="form-control" placeholder="street" >
                       </div>
                     </div>
                   </div>
@@ -264,8 +263,8 @@
                       <!-- textarea -->
                       <div class="form-group">
                         <label>more info on location</label>
-                        <textarea id="location" class="form-control" rows="3" placeholder="kwa mutwe muri 100m uvuye kumuhanda ..."></textarea>
-                        <div id="location-div" class="fields"></div><br>
+                        <textarea id="locationDescription" class="form-control" rows="3" placeholder="kwa mutwe muri 100m uvuye kumuhanda ..."></textarea>
+                        <div id="locationDescription-div" class="fields"></div><br>
                       </div>
                     </div>
 
@@ -276,6 +275,11 @@
                     <label class="col-form-label" for="inputSuccess"><i class=""></i>product name</label>
                     <input type="text" class="form-control" id="inputSuccess" placeholder="Umuceri">
                     <div id="productName-div" class="fields"></div><br>
+                  </div>
+                  <div class="form-group">
+                    <label>Quantity</label>
+                        <input type="text" id="quantity" class="form-control" placeholder="5kg, 3pieces"/>
+                        <div id="quantity-div" class="fields"></div><br>
                   </div>
                   <div class="form-group">
                     <label>Product desc</label>

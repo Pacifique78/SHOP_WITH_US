@@ -75,17 +75,6 @@ describe('View all orders', () => {
         done();
       });
   });
-  // it('Should should not return an order: no order found', (done) => {
-  //   chai.request(app).get('/orders')
-  //     .set('Authorization', process.env.delivererToken)
-  //     .end((err, res) => {
-  //       console.log(res.body);
-  //       expect(res).to.have.status(404);
-  //       expect(res.body).to.have.property('error');
-  //       expect(res.body.error).to.equal('No pending order found');
-  //       done();
-  //     });
-  // });
 });
 describe('Get specific order', () => {
   it('Should not return an order : orderId not found', (done) => {

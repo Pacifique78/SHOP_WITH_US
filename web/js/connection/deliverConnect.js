@@ -100,6 +100,8 @@ document.getElementById('deliver').addEventListener('click', async (e) => {
   }
 });
 
-document.getElementById('logout').addEventListener('click', () => {
+document.getElementById('logout').addEventListener('click', (e) => {
+  e.preventDefault();
   sessionStorage.removeItem('Authorization');
+  window.location.href = '../html/login.html';
 });

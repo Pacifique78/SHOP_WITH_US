@@ -53,6 +53,7 @@ window.addEventListener('load', async (e) => {
             <img class="group list-group-image" src="../img/bg-img/spii.png" alt="${result.id}" />
               <div class="caption" style="display: table;">
                 <div class="col-12 hot-dog"><p>Items: <i>${result.productname} </i></p></div>
+                <div class="col-12 hot-dog"><p>State: <i>${result.state} </i></p></div>
                 <div class="col-12 hot-dog"><p>time: <i>${result.updatedon}</i></p></div>
               </div>
             <div class="col-xs-12 " style="display: flex;align-items: center; justify-content: center;">
@@ -67,6 +68,8 @@ window.addEventListener('load', async (e) => {
     deleteOrder();
   }
 });
-document.getElementById('logout').addEventListener('click', () => {
+document.getElementById('logout').addEventListener('click', (e) => {
+  e.preventDefault();
   sessionStorage.removeItem('Authorization');
+  window.location.href = '../html/login.html';
 });

@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import authRouter from './Server/Routes/AuthRoutes';
 import orderRouter from './Server/Routes/OrderRoutes';
+import userRouter from './Server/Routes/UserRoutes';
 
 dotenv.config();
 const app = express();
@@ -23,6 +24,7 @@ app.use((req, res, next) => {
 });
 app.get('/', (req, res) => res.status(200).json({ message: 'WELCOME TO SHOP_WITH_US' }));
 app.use(authRouter);
+app.use(userRouter);
 app.use(orderRouter);
 app.use((req, res) => res.status(400).json({
   status: 400,
