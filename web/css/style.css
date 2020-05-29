@@ -1795,3 +1795,22 @@ you can use the generic selector below, but it's slower:
 .btm-btn2{
 	margin-left: 15%;
 }
+
+.has-treeview  p{
+  color: #000;
+}
+.crt p{
+  color: #000;
+}
+
+.required{
+  color: red;
+  font-size: 10px;
+}
+.delete{
+  margin-left: 26%;
+  min-width: 82px;
+}
+.orderz{
+  min-width: 82px;
+}

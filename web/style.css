@@ -5,7 +5,7 @@
 [Tables of CSS Content]
 
 + body
-  
+
     - 02.0 Spacing CSS
     - 03.0 Preloader CSS
     - 04.0 Heading CSS
@@ -1619,7 +1619,9 @@ margin-bottom: 0.6rem;
 }
 
 .f-in-so{
-border: none;
+border: 2px solid #9badbf;
+border-radius: 4px;
+width: 100%;
 }
 .err-sect{
 margin-top: 87px;

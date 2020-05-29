@@ -15,7 +15,18 @@
   <link rel="stylesheet" href="../css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <style media="screen">
+    .required{
+      color: red;
+      font-size: 20px;
+    }
+  </style>
 </head>
+
+
+
+
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
@@ -52,10 +63,7 @@
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
+
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
@@ -135,18 +143,15 @@
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
-            class="fas fa-th-large"></i></a>
-      </li>
+
     </ul>
   </nav>
   <!-- /.navbar -->
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../../index.html" class="brand-link">
-     
+    <a href="dashboard.html" class="brand-link">
+      Dashboard
     </a>
 
     <!-- Sidebar -->
@@ -184,15 +189,15 @@
                   <p>infos@stud.com</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
           <li class="nav-item">
-            <a href="pages/forms/general.html" class="nav-link">
-              <i class="nav-icon fas fa-shopping-cart"></i>
+            <a href="" class="nav-link">
+              <i class="nav-icon fas fa-cog"></i>
               <p>
-                Shop
-                
+                settings
+
               </p>
             </a>
           </li>
@@ -246,20 +251,20 @@
                     <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
-                        <label>District/Sector</label>
-                        <input type="text" id="location" class="form-control" placeholder="District/Sector.">
+                        <label>District/Sector<i class="required">*</i></label>
+                        <input type="text" required="true" id="location" class="form-control" placeholder="District/Sector.">
                         <div id="location-div" class="fields"></div><br>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Street </label>
-                        <input id="street" type="text" class="form-control" placeholder="street" >
+                        <label>Street <i class="required">*</i></label>
+                        <input id="street" type="text" required="true" class="form-control" placeholder="street" >
                       </div>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-12">
                       <!-- textarea -->
                       <div class="form-group">
                         <label>more info on location</label>
@@ -272,18 +277,18 @@
 
                   <!-- input states -->
                   <div class="form-group">
-                    <label class="col-form-label" for="inputSuccess"><i class=""></i>product name</label>
-                    <input type="text" class="form-control" id="inputSuccess" placeholder="Umuceri">
+                    <label class="col-form-label" for="inputSuccess"><i class=""></i>product name <i class="required">*</i></label>
+                    <input type="text" required="true" class="form-control" id="inputSuccess" placeholder="Umuceri">
                     <div id="productName-div" class="fields"></div><br>
                   </div>
                   <div class="form-group">
-                    <label>Quantity</label>
-                        <input type="text" id="quantity" class="form-control" placeholder="5kg, 3pieces"/>
+                    <label>Quantity<i class="required">*</i></label>
+                        <input type="text" required="true" id="quantity" class="form-control" placeholder="5kg, 3pieces"/>
                         <div id="quantity-div" class="fields"></div><br>
                   </div>
                   <div class="form-group">
-                    <label>Product desc</label>
-                        <textarea id="description" class="form-control" rows="3" placeholder="ibiro bitatu bya tanzania muremure ..."></textarea>
+                    <label>Product desc<i class="required">*</i> </label>
+                        <textarea id="description" required="true" class="form-control" rows="3" placeholder="ibiro bitatu bya tanzania muremure ..."></textarea>
                         <div id="description-div" class="fields"></div><br>
                   </div>
                   <!--<div class="row">
@@ -302,6 +307,7 @@
                   </div>-->
                   <div id="error"></div><br>
                   <button id="place-order" type="button" class="btn btn-outline-primary">Place my order</button>
+                  <a href="dashboard.html" class="btn btn-outline-danger float-right">Cancel</a>
 
                 </form>
               </div>

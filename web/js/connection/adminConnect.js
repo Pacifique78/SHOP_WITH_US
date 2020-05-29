@@ -50,7 +50,7 @@ const displayUserByName = () => {
           json.data.map((result) => {
             const users = document.getElementById('list');
             users.innerHTML += `
-          <div class="col-lg-3  col-sm-12 item-entry mb-3">
+          <div class="col-lg-3   item-entry mb-3">
                       <div class="container">
                         <div class="card">
                           <img src="../img/bg-img/spii.png" alt="">
@@ -67,7 +67,7 @@ const displayUserByName = () => {
                               <a class="button btm-btn2 bg-blue" href="" target="_blank"><span class="fa fa-gear"></span></a>
                             </div>
                           </div>
-    
+
                         </div>
                       </div>
                     </div>`;
@@ -116,7 +116,7 @@ const getAllUsers = async () => {
                             <a class="button btm-btn2 bg-blue" href="" target="_blank"><span class="fa fa-gear"></span></a>
                           </div>
                         </div>
-  
+
                       </div>
                     </div>
                   </div>`;
@@ -148,7 +148,7 @@ const getAllOrders = async () => {
     document.getElementById('list').innerHTML = '';
     json.data.results.forEach((result) => {
       document.getElementById('list').innerHTML += `
-          <div id="products" class="grid-ho list-group" style="background: white; border-bottom: 2px solid #007bff;">
+          <div id="products" class="col-lg-4  col-sm-12 item-entry mb-4 list-group" style="background: white; border-bottom: 2px solid #007bff;">
                             <div class="item  ">
                                 <div class="thumbnail">
                                     <img class="group list-group-image" src="../img/bg-img/spii.png" alt="" />
@@ -158,8 +158,8 @@ const getAllOrders = async () => {
                                         <div class="col-12 hot-dog"><p>time: <i>${result.updatedon}</i></p></div>
                                     </div>
                                     <div class="col-xs-12 " style="display: flex;align-items: center; justify-content: center;">
-                                      <a class="btn btn-outline-primary take" href=""data-toggle="modal" data-target="#exampleModal">edit</a>
-                                      <button type="button" id="${result.id}" class="delete btn btn-outline-primary bg-red" data-dismiss="modal" style="margin-left: 26%; min-width: 100px;">Delete</button>
+                                      <a class="btn btn-outline-primary orderz" href=""data-toggle="modal" data-target="#exampleModal">edit</a>
+                                      <button type="button" id="${result.id}" class="delete btn btn-outline-primary bg-red" data-dismiss="modal">Delete</button>
                                     </div>
                                 </div>
                             </div>

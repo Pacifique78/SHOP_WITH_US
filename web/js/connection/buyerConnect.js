@@ -57,8 +57,8 @@ window.addEventListener('load', async (e) => {
                 <div class="col-12 hot-dog"><p>time: <i>${result.updatedon}</i></p></div>
               </div>
             <div class="col-xs-12 " style="display: flex;align-items: center; justify-content: center;">
-              <a class="btn btn-outline-primary take" href=""data-toggle="modal" data-target="#exampleModal">edit</a>
-              <button type="button" id="${result.id}" class="delete btn btn-outline-primary bg-red" data-dismiss="modal" style="margin-left: 26%; min-width: 100px;">Delete</button>
+              <a class="btn btn-outline-primary orderz" style"min-width:82px;" href=""data-toggle="modal" data-target="#exampleModal">edit</a>
+              <button type="button" id="${result.id}" class="delete btn btn-outline-primary bg-red" data-dismiss="modal">Delete</button>
             </div>
           </div>
         </div>

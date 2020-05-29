@@ -19,7 +19,7 @@
 
 </head>
 
--->
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
@@ -54,7 +54,7 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-        <button id="logout" class="btn bg-red btn-sm" style="margin-right:4%; "><a href="login.html">Logout</a></button>
+
 
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
@@ -83,16 +83,13 @@
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
-            class="fas fa-th-large"></i></a>
-      </li>
+  <button id="logout" class="btn bg-red btn-sm" style="margin-right:4%; "><a href="login.html">Logout</a></button>
     </ul>
   </nav>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.html" class="brand-link">
 
@@ -190,17 +187,21 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <div class="product-card" style="display: flex;">
-                      <div class="product-image col-sm-4">
-                        <img src="../img/bg-img/spii.png" style="width: 30vw; height: 16vh;">
-                      </div>
-                      <div class="product-details col-sm-8 mod-det">
-                        <label>Location:</label>
+                    <div class="product-card" style="display: flex;"><br>
+
+                      <div class="product-details col-sm-12 mod-det"><br>
+                        <label>District:</label><br>
                         <input class="f-in-so" type="text-sm" name="loc" placeholder="Nyamirambo, kwamutw"><br>
-                        <label>Products:</label>
-                        <textarea  class="md-textarea f-in-so" placeholder="isukali. 10Kg" style="min-height: 25px;"></textarea><br>
-                        <label>Fee</label>
-                        <input   class="f-in-so" type="text" name="" value="14500">
+                        <label>Street:</label><br>
+                        <input class="f-in-so" type="text-sm" name="loc" placeholder="Nyamirambo, kwamutw"><br>
+                        <label>Locaton</label> <br>
+                        <textarea class="f-in-so" name="loc" placeholder="kwa mutwe neza"></textarea> <br>
+                        <label>Prod Name:</label><br>
+                        <input class="f-in-so" type="text" name="prodName" value="" placeholder="Isukali"><br>
+                        <label> Quantity:</label><br>
+                        <input class="f-in-so" type="text" name="prodName" value="" placeholder="5kgs"><br>
+                        <label>Prod desc</label> <br>
+                        <input   class="f-in-so" type="text" name="" value="isukali ya kabuye">
 
 
                       </div>
