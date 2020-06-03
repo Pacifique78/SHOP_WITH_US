@@ -10,6 +10,7 @@
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../fonts/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
   <!-- IonIcons -->
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
@@ -147,16 +148,121 @@
       <div class="content-header">
         <div class="container-fluid">
 
-          <section class="Porduct-grid">
+          <section class="Porduct-grid row">
          
+            <div class="card col-lg-12">
+              <div class="card-heading  ">
+                <h3 class="card-title text-black pt-1 pb-0">overview</h3>
+              </div>
+              <div class="row card-body">
+
+                <div class="col-lg-3">
+                  <div class="card ">
+                    <h2><span class="fa fa-spinner"> 204</span></h2>
+                    <h7>Pending Orders</h7>
+                  </div>
+                </div>
+
+                <div class="col-lg-3">
+                  <div class="card">
+                    <h2><span class="fa fa-check-circle-o"> 204</span></h2>
+                    <h7>completed Orders</h7>
+                  </div>
+                </div>
+
+                <div class="col-lg-3">
+                  <div class="card">
+                    <h2><span class="fa fa-list"> 204</span></h2>
+                    <h7>Total orders</h7>
+                  </div>
+                </div>
+
+                <div class="col-lg-3">
+                  <div class="card">
+                    <h2><span class="fa fa-line-chart"> 17864</span></h2>
+                    <h7>Toatal visits</h7>
+                  </div>
+                </div>
+            </div>
+
+           <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="prodModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+            <div class="card ">
+              <div class="card-heading bg-white-smoke p-1 ">
+                <h3 class="card-title">Orders</h3>
+              </div>
+              <div class="row card-body">
+
+                
+                  <table class="table t table-hover" >
+                    <thead >
+                      <tr>
+                        
+                        <th scope="col">Order Id</th>
+                        <th scope="col">client's Name</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Order status</th>
+                          
+                      </tr>
+                    </thead>
+                    <tbody data-toggle="modal" data-target="#prodModal">
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>Taken </td>
+                    
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        <td>pending </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                        <td>done </td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+               
+            </div>
+            
+
           </section><!-- /.row -->
         </div><!-- /.container-fluid -->
       </div>
-      <!-- /.content-header -->
-
-      <!-- Main content -->
-
-      <!-- /.content -->
+    
     </div>
     <!-- /.content-wrapper -->
 
@@ -181,7 +287,7 @@
   <!-- jQuery -->
   <script src="../js/jquery.min.js"></script>
   <!-- Bootstrap -->
-  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
   <!-- AdminLTE -->
   <script src="../js/adminlte.js"></script>
 
@@ -189,6 +295,7 @@
   <script src="../js/Chart.min.js"></script>
   <script src="../js/demo.js"></script>
   <script src="../js/dashboard3.js"></script>
+  
 </body>
 
 </html>
