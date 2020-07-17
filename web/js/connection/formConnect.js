@@ -1,4 +1,28 @@
-const url = 'https://akoonlineshop.herokuapp.com';
+const url = 'http://localhost:4500';
+const placeAnOrder = async (
+  productName,
+  description,
+  quantity,
+  location,
+  street,
+  locationDesc
+) =>
+  await fetch(`${url}/orders`, {
+    method: 'POST',
+    headers: {
+      Authorization: sessionStorage.getItem('Authorization'),
+      Accept: 'application/json, text/plain, */*',
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      productName,
+      description,
+      quantity,
+      location,
+      street,
+      locationDesc,
+    }),
+  });
 [...document.getElementsByTagName('input')].forEach((input) => {
   input.addEventListener('click', () => {
     [...document.getElementsByClassName('fields')].forEach((field) => {
@@ -17,20 +41,17 @@ document.getElementById('place-order').addEventListener('click', async (e) => {
   const productName = document.getElementById('inputSuccess').value;
   const description = document.getElementById('description').value;
   const quantity = document.getElementById('quantity').value;
-  const locationDescription = document.getElementById('locationDescription').value;
+  const locationDesc = document.getElementById('locationDesc').value;
   const location = document.getElementById('location').value;
   const street = document.getElementById('street').value;
-  const response = await fetch(`${url}/orders`, {
-    method: 'POST',
-    headers: {
-      Authorization: sessionStorage.getItem('Authorization'),
-      Accept: 'application/json, text/plain, */*',
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      productName, description, quantity, location, street, locationDescription,
-    }),
-  });
+  const response = await placeAnOrder(
+    productName,
+    description,
+    quantity,
+    location,
+    street,
+    locationDesc
+  );
   const json = await response.json();
   if (json.error) {
     if (json.status === 400) {
@@ -39,6 +60,8 @@ document.getElementById('place-order').addEventListener('click', async (e) => {
       errorDiv.style.display = 'inline';
       errorDiv.style.color = '#d84930';
     } else {
+      sessionStorage.setItem('errorMessage', json.error);
+      sessionStorage.setItem('status', json.status);
       window.location.href = '../html/error.html';
     }
   } else {

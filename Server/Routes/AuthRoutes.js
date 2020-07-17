@@ -11,10 +11,22 @@ import checkResetPassword from '../Middleware/checkResetPassword';
 const router = express.Router();
 const newAuth = new User();
 router.post('/auth/signup', [CheckSignUp], newAuth.signUp);
-router.patch('/auth/confirm', [checkToken, checkVerificationCode], newAuth.verifyPhoneNumber);
+router.patch(
+  '/auth/confirm',
+  [checkToken, checkVerificationCode],
+  newAuth.verifyPhoneNumber
+);
 router.get('/auth/resend', [checkToken], newAuth.resendVerificationCode);
 router.post('/auth/signin', [checkSignIn], newAuth.signIn);
-router.post('/auth/forgot-password', [checkForgotPassword], newAuth.forgetPassword);
+router.post(
+  '/auth/forgot-password',
+  [checkForgotPassword],
+  newAuth.forgetPassword
+);
 router.get('/auth/forgot-password/:token', [checkToken], renderHtml);
-router.post('/auth/reset-password', [checkToken, checkResetPassword], newAuth.resetPassword);
+router.post(
+  '/auth/reset-password',
+  [checkToken, checkResetPassword],
+  newAuth.resetPassword
+);
 export default router;

@@ -1,7 +1,7 @@
 import { querry } from '../Db';
 
-const checkOwner = async (req, res, next) => {
-  const selectQuery = 'SELECT * FROM orders WHERE id=$1 AND buyerid=$2;';
+const checkOwnerWithDescription = async (req, res, next) => {
+  const selectQuery = 'SELECT * FROM price_descriptions WHERE id=$1 AND buyerid=$2;';
   const result = await querry(selectQuery, [
     parseInt(req.params.orderId, 10),
     req.tokenData.id,
@@ -15,4 +15,4 @@ const checkOwner = async (req, res, next) => {
     });
   }
 };
-export default checkOwner;
+export default checkOwnerWithDescription;

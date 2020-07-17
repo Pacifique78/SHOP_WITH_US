@@ -10,7 +10,9 @@ const { expect } = chai;
 chai.use(chaiHttp);
 describe('Create a new order', () => {
   it('Should return a success: new order created', (done) => {
-    chai.request(app).post('/orders')
+    chai
+      .request(app)
+      .post('/orders')
       .set('Authorization', process.env.userToken)
       .send(testOrder[0])
       .end((err, res) => {
@@ -21,7 +23,9 @@ describe('Create a new order', () => {
       });
   });
   it('Should return a success: new order created', (done) => {
-    chai.request(app).post('/orders')
+    chai
+      .request(app)
+      .post('/orders')
       .set('Authorization', process.env.userToken)
       .send(testOrder[0])
       .end((err, res) => {
@@ -32,7 +36,9 @@ describe('Create a new order', () => {
       });
   });
   it('Should return an error: Invalid data', (done) => {
-    chai.request(app).post('/orders')
+    chai
+      .request(app)
+      .post('/orders')
       .set('Authorization', process.env.userToken)
       .send(testOrder[1])
       .end((err, res) => {
@@ -42,7 +48,9 @@ describe('Create a new order', () => {
       });
   });
   it('Should return a success: second order created', (done) => {
-    chai.request(app).post('/orders')
+    chai
+      .request(app)
+      .post('/orders')
       .set('Authorization', process.env.userToken)
       .send(testOrder[0])
       .end((err, res) => {
@@ -55,7 +63,9 @@ describe('Create a new order', () => {
 });
 describe('View all orders', () => {
   it('Should return all orders', (done) => {
-    chai.request(app).get('/orders')
+    chai
+      .request(app)
+      .get('/orders')
       .set('Authorization', process.env.delivererToken)
       .end((err, res) => {
         expect(res).to.have.status(200);
@@ -66,7 +76,9 @@ describe('View all orders', () => {
       });
   });
   it('Should not return all orders', (done) => {
-    chai.request(app).get('/orders')
+    chai
+      .request(app)
+      .get('/orders')
       .set('Authorization', process.env.userToken)
       .end((err, res) => {
         expect(res).to.have.status(403);
@@ -78,7 +90,9 @@ describe('View all orders', () => {
 });
 describe('Get specific order', () => {
   it('Should not return an order : orderId not found', (done) => {
-    chai.request(app).get(`/orders/${testOrder[2].orderId}`)
+    chai
+      .request(app)
+      .get(`/orders/${testOrder[2].orderId}`)
       .set('Authorization', process.env.delivererToken)
       .end((err, res) => {
         expect(res).to.have.status(404);
@@ -88,7 +102,9 @@ describe('Get specific order', () => {
       });
   });
   it('Should return an order with the specified ID', (done) => {
-    chai.request(app).get(`/orders/${testOrder[3].orderId}`)
+    chai
+      .request(app)
+      .get(`/orders/${testOrder[3].orderId}`)
       .set('Authorization', process.env.delivererToken)
       .end((err, res) => {
         expect(res).to.have.status(200);
@@ -101,7 +117,9 @@ describe('Get specific order', () => {
 });
 describe('View my orders', () => {
   it('Should return all orders of mine', (done) => {
-    chai.request(app).get('/myorders')
+    chai
+      .request(app)
+      .get('/myorders')
       .set('Authorization', process.env.userToken)
       .end((err, res) => {
         expect(res).to.have.status(200);
@@ -112,19 +130,25 @@ describe('View my orders', () => {
       });
   });
   it('Should should not return an order: no order found', (done) => {
-    chai.request(app).get('/myorders')
+    chai
+      .request(app)
+      .get('/myorders')
       .set('Authorization', process.env.adminToken)
       .end((err, res) => {
         expect(res).to.have.status(404);
         expect(res.body).to.have.property('error');
-        expect(res.body.error).to.equal('There is no orders yet please create some orders');
+        expect(res.body.error).to.equal(
+          'There is no orders yet please create some orders'
+        );
         done();
       });
   });
 });
 describe('Update my order', () => {
   it('Should update an order', (done) => {
-    chai.request(app).patch(`/myorders/${testOrder[3].orderId}`)
+    chai
+      .request(app)
+      .patch(`/myorders/${testOrder[3].orderId}`)
       .set('Authorization', process.env.userToken)
       .send(testOrder[0])
       .end((err, res) => {
@@ -135,7 +159,9 @@ describe('Update my order', () => {
       });
   });
   it('Should not update order: order not found', (done) => {
-    chai.request(app).patch(`/myorders/${testOrder[2].orderId}`)
+    chai
+      .request(app)
+      .patch(`/myorders/${testOrder[2].orderId}`)
       .set('Authorization', process.env.userToken2)
       .send(testOrder[0])
       .end((err, res) => {
@@ -148,7 +174,9 @@ describe('Update my order', () => {
 });
 describe('Delete an order', () => {
   it('Should delete an order', (done) => {
-    chai.request(app).delete(`/orders/${testOrder[3].orderId}`)
+    chai
+      .request(app)
+      .delete(`/orders/${testOrder[3].orderId}`)
       .set('Authorization', process.env.adminToken)
       .end((err, res) => {
         expect(res).to.have.status(204);
@@ -156,7 +184,9 @@ describe('Delete an order', () => {
       });
   });
   it('Should not delete order: order not found', (done) => {
-    chai.request(app).delete(`/orders/${testOrder[2].orderId}`)
+    chai
+      .request(app)
+      .delete(`/orders/${testOrder[2].orderId}`)
       .set('Authorization', process.env.adminToken)
       .end((err, res) => {
         expect(res).to.have.status(404);
@@ -166,7 +196,9 @@ describe('Delete an order', () => {
       });
   });
   it('Should not delete order: unauthorized', (done) => {
-    chai.request(app).delete(`/orders/${testOrder[2].orderId}`)
+    chai
+      .request(app)
+      .delete(`/orders/${testOrder[2].orderId}`)
       .set('Authorization', process.env.userToken)
       .end((err, res) => {
         expect(res).to.have.status(403);
@@ -178,7 +210,9 @@ describe('Delete an order', () => {
 });
 describe('Perform order', () => {
   it('Should give the order price', (done) => {
-    chai.request(app).post('/price_description')
+    chai
+      .request(app)
+      .post('/price_description')
       .set('Authorization', process.env.adminToken)
       .send(testOrder[4])
       .end((err, res) => {
@@ -189,7 +223,9 @@ describe('Perform order', () => {
       });
   });
   it('Should not delete order: order not found', (done) => {
-    chai.request(app).post('/price_description')
+    chai
+      .request(app)
+      .post('/price_description')
       .set('Authorization', process.env.adminToken)
       .send(testOrder[5])
       .end((err, res) => {
@@ -200,7 +236,9 @@ describe('Perform order', () => {
       });
   });
   it('Should not delete order: invalid data', (done) => {
-    chai.request(app).post('/price_description')
+    chai
+      .request(app)
+      .post('/price_description')
       .set('Authorization', process.env.adminToken)
       .send(testOrder[6])
       .end((err, res) => {
@@ -212,7 +250,9 @@ describe('Perform order', () => {
 });
 describe('Accept price', () => {
   it('Should allow the user to accept the price from a deliverer', (done) => {
-    chai.request(app).patch(`/orders/${testOrder[3].orderId}`)
+    chai
+      .request(app)
+      .patch(`/orders/${testOrder[3].orderId}`)
       .set('Authorization', process.env.userToken)
       .send(testOrder[0])
       .end((err, res) => {
@@ -223,7 +263,9 @@ describe('Accept price', () => {
       });
   });
   it('Should not allow the user to accept the price from a deliverer: price_description not found', (done) => {
-    chai.request(app).patch(`/orders/${testOrder[2].orderId}`)
+    chai
+      .request(app)
+      .patch(`/orders/${testOrder[2].orderId}`)
       .set('Authorization', process.env.userToken)
       .send(testOrder[0])
       .end((err, res) => {
@@ -236,7 +278,9 @@ describe('Accept price', () => {
 });
 describe('Reject an accepted order', () => {
   it('Should allow the user to reject an accepted  order which have not been performed', (done) => {
-    chai.request(app).patch(`/rejected/${testOrder[4].orderId}`)
+    chai
+      .request(app)
+      .patch(`/rejected/${testOrder[4].orderId}`)
       .set('Authorization', process.env.userToken)
       .end((err, res) => {
         expect(res).to.have.status(200);
@@ -246,12 +290,16 @@ describe('Reject an accepted order', () => {
       });
   });
   it('Should allow the user to reject an accepted  order which have not been performed', (done) => {
-    chai.request(app).patch(`/rejected/${testOrder[3].orderId}`)
+    chai
+      .request(app)
+      .patch(`/rejected/${testOrder[3].orderId}`)
       .set('Authorization', process.env.userToken2)
       .end((err, res) => {
         expect(res).to.have.status(403);
         expect(res.body).to.have.property('error');
-        expect(res.body.error).to.equal('You are not allowed to perform this action');
+        expect(res.body.error).to.equal(
+          'You are not allowed to perform this action'
+        );
         done();
       });
   });

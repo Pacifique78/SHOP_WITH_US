@@ -1,4 +1,58 @@
-const url = 'https://akoonlineshop.herokuapp.com';
+const url = 'http://localhost:4500';
+const deleteOrdersAPI = async (orderId) =>
+  await fetch(`${url}/orders/${orderId}`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: sessionStorage.getItem('Authorization'),
+      Accept: 'application/json, text/plain, */*',
+      'content-type': 'application/json',
+    },
+  });
+const getUserByName = async () =>
+  await fetch(`${url}/user/${start}`, {
+    method: 'GET',
+    headers: {
+      Authorization: sessionStorage.getItem('Authorization'),
+      Accept: 'application/json, text/plain, */*',
+      'content-type': 'application/json',
+    },
+  });
+const getAllUsersAPI = async () =>
+  await fetch(`${url}/users`, {
+    method: 'GET',
+    headers: {
+      Authorization: sessionStorage.getItem('Authorization'),
+      Accept: 'application/json, text/plain, */*',
+      'content-type': 'application/json',
+    },
+  });
+const getAllOrdersAPI = async () =>
+  await fetch(`${url}/orders`, {
+    method: 'GET',
+    headers: {
+      Authorization: sessionStorage.getItem('Authorization'),
+      Accept: 'application/json, text/plain, */*',
+      'content-type': 'application/json',
+    },
+  });
+const getPaginatedOrders = async (page) =>
+  await fetch(`${url}/orders/page/${page}`, {
+    method: 'GET',
+    headers: {
+      Authorization: sessionStorage.getItem('Authorization'),
+      Accept: 'application/json, text/plain, */*',
+      'content-type': 'application/json',
+    },
+  });
+const getPaginatedUsers = async (page) =>
+  await fetch(`${url}/users/page/${page}`, {
+    method: 'GET',
+    headers: {
+      Authorization: sessionStorage.getItem('Authorization'),
+      Accept: 'application/json, text/plain, */*',
+      'content-type': 'application/json',
+    },
+  });
 const deleteBtns = document.getElementsByClassName('delete');
 const deleteOrder = () => {
   // eslint-disable-next-line no-restricted-syntax
@@ -6,17 +60,12 @@ const deleteOrder = () => {
     deleteBtn.addEventListener('click', async (e) => {
       e.preventDefault();
       const orderId = deleteBtn.getAttribute('id');
-      const response = await fetch(`${url}/orders/${orderId}`, {
-        method: 'DELETE',
-        headers: {
-          Authorization: sessionStorage.getItem('Authorization'),
-          Accept: 'application/json, text/plain, */*',
-          'content-type': 'application/json',
-        },
-      });
+      const response = await deleteOrdersAPI(orderId);
       if (response.status === 204) {
         document.getElementById('orders').click();
       } else {
+        sessionStorage.setItem('errorMessage', response.error);
+        sessionStorage.setItem('status', response.status);
         window.location.href = '../html/error.html';
       }
     });
@@ -32,14 +81,7 @@ const displayUserByName = () => {
       if (start === 'All') {
         document.getElementById('users').click();
       } else {
-        const response = await fetch(`${url}/user/${start}`, {
-          method: 'GET',
-          headers: {
-            Authorization: sessionStorage.getItem('Authorization'),
-            Accept: 'application/json, text/plain, */*',
-            'content-type': 'application/json',
-          },
-        });
+        const response = await getUserByName(start);
         const json = await response.json();
         if (json.error) {
           if (json.status === 404) {
@@ -58,7 +100,11 @@ const displayUserByName = () => {
                           <h2>${result.isbuyer ? 'Buyer' : 'Deliverer'}</h2>
                           <div class="row">
                             <div class="container">
-                                ${result.isbuyer ? '<span class="fa fa-chart-line"></span>' : '<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fas fa-star-half-alt"> 4.6</span>'}
+                                ${
+                                  result.isbuyer
+                                    ? '<span class="fa fa-chart-line"></span>'
+                                    : '<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fas fa-star-half-alt"> 4.6</span>'
+                                }
                             </div>
                           </div>
                           <div class="row">
@@ -81,22 +127,16 @@ const displayUserByName = () => {
 };
 const displayName = document.getElementById('user');
 const getAllUsers = async () => {
-  const response = await fetch(`${url}/users`, {
-    method: 'GET',
-    headers: {
-      Authorization: sessionStorage.getItem('Authorization'),
-      Accept: 'application/json, text/plain, */*',
-      'content-type': 'application/json',
-    },
-  });
+  const response = await getAllUsersAPI();
   const json = await response.json();
-
   displayName.innerHTML = json.name || 'Admin Name';
   if (json.error) {
+    sessionStorage.setItem('errorMessage', json.error);
+    sessionStorage.setItem('status', json.status);
     window.location.href = '../html/error.html';
   } else {
     document.getElementById('list').innerHTML = '';
-    json.data.results.map((result) => {
+    json.data.map((result) => {
       const users = document.getElementById('list');
       users.innerHTML += `
         <div class="col-lg-3  col-sm-12 item-entry mb-3">
@@ -107,7 +147,11 @@ const getAllUsers = async () => {
                         <h2>${result.isbuyer ? 'Buyer' : 'Deliverer'}</h2>
                         <div class="row">
                           <div class="container">
-                              ${result.isbuyer ? '<span class="fa fa-chart-line"></span>' : '<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fas fa-star-half-alt"> 4.6</span>'}
+                              ${
+                                result.isbuyer
+                                  ? '<span class="fa fa-chart-line"></span>'
+                                  : '<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fas fa-star-half-alt"> 4.6</span>'
+                              }
                           </div>
                         </div>
                         <div class="row">
@@ -127,14 +171,7 @@ const getAllUsers = async () => {
   }
 };
 const getAllOrders = async () => {
-  const response = await fetch(`${url}/orders`, {
-    method: 'GET',
-    headers: {
-      Authorization: sessionStorage.getItem('Authorization'),
-      Accept: 'application/json, text/plain, */*',
-      'content-type': 'application/json',
-    },
-  });
+  const response = await getPaginatedOrders(1);
   const json = await response.json();
   displayName.innerHTML = json.name || 'Admin Name';
   if (json.error) {
@@ -142,6 +179,8 @@ const getAllOrders = async () => {
       const containerDiv = document.getElementById('list');
       containerDiv.innerHTML = json.error;
     } else {
+      sessionStorage.setItem('errorMessage', json.error);
+      sessionStorage.setItem('status', json.status);
       window.location.href = '../html/error.html';
     }
   } else {
@@ -154,8 +193,8 @@ const getAllOrders = async () => {
                                     <img class="group list-group-image" src="../img/bg-img/spii.png" alt="" />
                                     <div class="caption" style="display: table;">
                                         <div class="col-12 hot-dog"><p>Items: <i>${result.productname} </i></p></div>
-                                        <div class="col-12 hot-dog"><p>State: <i>${result.state} </i></p></div>
                                         <div class="col-12 hot-dog"><p>time: <i>${result.updatedon}</i></p></div>
+                                        <div class="col-12 hot-dog"><p>State: <i>${result.state} </i></p></div>
                                     </div>
                                     <div class="col-xs-12 " style="display: flex;align-items: center; justify-content: center;">
                                       <a class="btn btn-outline-primary orderz" href=""data-toggle="modal" data-target="#exampleModal">edit</a>

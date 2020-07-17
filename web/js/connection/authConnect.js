@@ -1,4 +1,50 @@
-const url = 'https://akoonlineshop.herokuapp.com';
+const url = 'http://localhost:4500';
+const signUp = async (
+  name,
+  email,
+  phoneNumber,
+  password,
+  confirmPassword,
+  isBuyer
+) =>
+  await fetch(`${url}/auth/signup`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      name,
+      email,
+      phoneNumber,
+      password,
+      confirmPassword,
+      isBuyer,
+    }),
+  });
+const singIn = async (email, password) =>
+  await fetch(`${url}/auth/signin`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      email,
+      password,
+    }),
+  });
+const forgotPassword = async (email) =>
+  await fetch(`${url}/auth/forgot-password`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      email,
+    }),
+  });
 [...document.getElementsByTagName('input')].forEach((input) => {
   input.addEventListener('click', () => {
     [...document.getElementsByClassName('fields')].forEach((field) => {
@@ -22,16 +68,14 @@ document.getElementById('register').addEventListener('submit', async (e) => {
   const selected = document.getElementById('cont-typ');
   const isBuyer = selected.options[selected.selectedIndex].value;
 
-  const response = await fetch(`${url}/auth/signup`, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json, text/plain, */*',
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      name, email, phoneNumber, password, confirmPassword, isBuyer,
-    }),
-  });
+  const response = await signUp(
+    name,
+    email,
+    phoneNumber,
+    password,
+    confirmPassword,
+    isBuyer
+  );
   const json = await response.json();
   if (json.error) {
     if (json.status === 409) {
@@ -51,7 +95,6 @@ document.getElementById('register').addEventListener('submit', async (e) => {
   }
 });
 
-
 document.getElementById('login').addEventListener('submit', async (e) => {
   e.preventDefault();
   [...document.getElementsByClassName('fields')].forEach((field) => {
@@ -62,16 +105,7 @@ document.getElementById('login').addEventListener('submit', async (e) => {
   const email = document.getElementById('login-email').value;
   const password = document.getElementById('login-password').value;
 
-  const response = await fetch(`${url}/auth/signin`, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json, text/plain, */*',
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      email, password,
-    }),
-  });
+  const response = await singIn(email, password);
   const json = await response.json();
   if (json.error) {
     if (json.status === 401) {
@@ -107,16 +141,7 @@ document.getElementById('forgot').addEventListener('submit', async (e) => {
   document.getElementById('forgot-error').style.display = 'none';
   const email = document.getElementById('forgot-email').value;
 
-  const response = await fetch(`${url}/auth/forgot-password`, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json, text/plain, */*',
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      email,
-    }),
-  });
+  const response = await forgotPassword(email);
   const json = await response.json();
 
   if (json.error) {

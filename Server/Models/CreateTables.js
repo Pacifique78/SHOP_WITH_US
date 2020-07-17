@@ -29,6 +29,7 @@ export const createTables = () => {
         createdOn character varying(255) NOT NULL,
         updatedOn character varying(255) NOT NULL,
         state character varying(255) NOT NULL,
+        numberOfBids character varying(50) NOT NULL,
         PRIMARY KEY(id)
     );
     CREATE TABLE IF NOT EXISTS
@@ -48,7 +49,8 @@ export const createTables = () => {
     VALUES ('Pacifique Tuyizere', 'kigalicodingacademy@gmail.com', '+250788811122', '$2b$08$ASiZsryIorWE9/lAf5gA9O2PCsjwM/19ApfYpTccj9YkLbV8MIqTm', true, true, 'active', 0);
     INSERT INTO users (name, email, phoneNumber, password, isAdmin, isBuyer, status, numberOfOrders) 
     VALUES ('dammy user', 'dammyuser@ako.com', '+250788811122', '$2b$08$ASiZsryIorWE9/lAf5gA9O2PCsjwM/19ApfYpTccj9YkLbV8MIqTm', false, false, 'active', 0);`;
-  pool.query(createTablesQuery)
+  pool
+    .query(createTablesQuery)
     .then(() => console.log('Tables created successfully...'))
     .catch((err) => {
       console.log(err);

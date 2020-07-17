@@ -1,4 +1,4 @@
-const url = 'https://akoonlineshop.herokuapp.com';
+const url = 'http://localhost:4500';
 document.getElementById('verify').addEventListener('submit', async (e) => {
   e.preventDefault();
   document.getElementById('code-div').style.display = 'none';
@@ -27,7 +27,6 @@ document.getElementById('verify').addEventListener('submit', async (e) => {
     window.location.href = '../html/dashboard.html';
   }
 });
-
 
 document.getElementById('resend').addEventListener('click', async (e) => {
   e.preventDefault();

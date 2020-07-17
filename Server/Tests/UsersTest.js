@@ -9,7 +9,9 @@ const { expect } = chai;
 chai.use(chaiHttp);
 describe('Desactivate a user', () => {
   it('Should return a success: user desactiated or activated', (done) => {
-    chai.request(app).patch('/users/1')
+    chai
+      .request(app)
+      .patch('/users/1')
       .set('Authorization', process.env.adminToken)
       .end((err, res) => {
         expect(res).to.have.status(200);

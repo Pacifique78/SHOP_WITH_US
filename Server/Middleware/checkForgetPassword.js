@@ -3,7 +3,11 @@ import validationHelper from '../Helpers/ValidationHelper';
 
 const checkForgotPassword = (req, res, next) => {
   const forgotPasswordSchemas = Joi.object().keys({
-    email: Joi.string().trim().regex(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)
+    email: Joi.string()
+      .trim()
+      .regex(
+        /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+      )
       .error(() => ({
         message: 'email is not valid',
       })),
