@@ -1,4 +1,4 @@
-const url = 'http://localhost:4500';
+const url = 'https://akoonlineshop.herokuapp.com';
 const deleteOrdersAPI = async (orderId) =>
   await fetch(`${url}/orders/${orderId}`, {
     method: 'DELETE',

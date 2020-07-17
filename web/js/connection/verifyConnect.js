@@ -1,4 +1,4 @@
-const url = 'http://localhost:4500';
+const url = 'https://akoonlineshop.herokuapp.com';
 document.getElementById('verify').addEventListener('submit', async (e) => {
   e.preventDefault();
   document.getElementById('code-div').style.display = 'none';
