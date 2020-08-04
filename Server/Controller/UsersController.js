@@ -31,20 +31,29 @@ class Users {
     });
   }
 
-  async selectUserByName(req, res) {
+  async selectByName(req, res) {
+    const { model } = req.params;
     const { start } = req.params;
-    const selectQuerry = 'SELECT * FROM users WHERE UPPER(name) LIKE $1;';
+    const selectQuerry = `SELECT * FROM ${model} ${
+      model === 'users'
+        ? 'WHERE NOT isadmin AND UPPER(name) LIKE $1'
+        : 'WHERE UPPER(productname) LIKE $1'
+    };`;
     const result = await querry(selectQuerry, [`${start}%`]);
     if (result[0]) {
       return res.status(200).json({
         status: 200,
-        message: 'users successfully retrieved',
+        message: `${
+          model.charAt(0).toUpperCase() + model.slice(1)
+        } successfully retrieved`,
         data: result,
       });
     }
     return res.status(404).json({
       status: 404,
-      error: `Users with name starting with ${start} not found`,
+      error: `${
+        model.charAt(0).toUpperCase() + model.slice(1)
+      } with name starting with ${start} not found`,
     });
   }
 
@@ -69,7 +78,9 @@ class Users {
       }
       return res.status(200).json({
         status: 200,
-        message: 'Users desactivated/activated',
+        message: `User ${
+          updatedUser[0].status === 'active' ? 'Activated' : 'Desactivated'
+        }`,
         data: updatedUser[0],
       });
     }
@@ -92,7 +103,7 @@ class Users {
       ]);
       return res.status(200).json({
         status: 200,
-        message: 'Users successfully changed',
+        message: 'User successfully changed',
         data: updatedUser[0],
       });
     }
@@ -130,6 +141,56 @@ class Users {
         data: paginatedResult,
       });
     }
+    return res.status(404).json({
+      status: 404,
+      name: req.tokenData.name,
+      error: `No ${model} found`,
+    });
+  }
+
+  async search(req, res) {
+    const { searchKey } = req.params;
+    const { model } = req.params;
+    const selectQuerry = `SELECT * FROM ${model} ${
+      model === 'users' ? 'WHERE NOT isadmin' : ''
+    };`;
+    const results = await querry(selectQuerry);
+    if (results[0]) {
+      const searchResults = [];
+      if (searchKey === undefined) {
+        return res.status(200).json({
+          status: 200,
+          name: req.tokenData.name,
+          message: `${
+            model.charAt(0).toUpperCase() + model.slice(1)
+          } successfully retreived`,
+          data: results,
+        });
+      }
+      results.forEach((result) => {
+        const searchEl = `${
+          model === 'users'
+            ? result.name.toUpperCase()
+            : result.productname.toUpperCase()
+        }`;
+        if (searchEl.indexOf(searchKey.toUpperCase()) > -1) {
+          searchResults.push(result);
+        }
+      });
+      return res.status(200).json({
+        status: 200,
+        name: req.tokenData.name,
+        message: `${
+          model.charAt(0).toUpperCase() + model.slice(1)
+        } successfully retreived`,
+        data: searchResults,
+      });
+    }
+    return res.status(404).json({
+      status: 404,
+      name: req.tokenData.name,
+      error: `No ${model} found`,
+    });
   }
 }
 export default Users;

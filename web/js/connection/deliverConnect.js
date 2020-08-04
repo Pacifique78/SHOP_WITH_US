@@ -1,4 +1,4 @@
-const url = 'https://akoonlineshop.herokuapp.com';
+const url = 'http://localhost:4500';
 const getAllOrders = async () =>
   await fetch(`${url}/orders`, {
     method: 'GET',
@@ -41,16 +41,28 @@ const makeABid = async (method = 'GET', orderId = null, price = null) => {
     }),
   });
 };
+const searchAPI = async (model, searchKey = '') =>
+  await fetch(`${url}/search/${model}/${searchKey}`, {
+    method: 'GET',
+    headers: {
+      Authorization: sessionStorage.getItem('Authorization'),
+      Accept: 'application/json, text/plain, */*',
+      'content-type': 'application/json',
+    },
+  });
 
 const deliverBtns = document.getElementsByClassName('take');
 const displayName = document.getElementById('user');
 const bidsMade = async () => {
   const response = await makeABid();
   const json = await response.json();
-  return json.data.map((order) => ({
-    orderId: order.orderid,
-    delivererId: order.delivererid,
-  }));
+  if (json.data) {
+    return json.data.map((order) => ({
+      orderId: order.orderid,
+      delivererId: order.delivererid,
+    }));
+  }
+  return [];
 };
 
 const deliverBtnClicked = () => {
@@ -90,6 +102,52 @@ const deliverBtnClicked = () => {
       ).innerHTML = `${buyername}, ${buyerphone}`;
     });
   }
+};
+const search = async () => {
+  const input = document.getElementById('search-input').value;
+  const response = await searchAPI('orders', input);
+  const json = await response.json();
+  const DOMEl = document.getElementById('list');
+  DOMEl.innerHTML = '';
+  const AllBidsMade = await bidsMade();
+  console.log(json.data);
+  json.data.forEach((result) => {
+    DOMEl.innerHTML += `<div id="products" class="grid-ho list-group" style="background: white; border-bottom: 2px solid #007bff;">
+    <div class="item  ">
+        <div class="thumbnail">
+            <img class="group list-group-image" src="../img/bg-img/spii.png" alt="" />
+            <div class="caption" style="display: table;">
+                <div class="col-12 hot-dog"><p>Items: <i>${
+                  result.productname
+                } </i></p></div>
+                <div class="col-12 hot-dog"><p>time: <i>${
+                  result.updatedon
+                }</i></p></div>
+                <div class="col-12 hot-dog"><p>State: <i>${
+                  result.state
+                } </i></p></div>
+            </div>
+            ${
+              result.state === 'pending'
+                ? `
+            <div class="col-xs-12 col-md-6" style="display: flex;align-items: center; justify-content: center;">
+            ${
+              AllBidsMade.some(
+                (bid) =>
+                  bid['orderId'] === result.id &&
+                  bid['delivererId'] === json.delivererId
+              )
+                ? `<a data-orderId="${result.id}" class="btn btn-outline-primary take" href=""data-toggle="modal" data-target="#exampleModal">Change a Bid</a>`
+                : `<a data-orderId="${result.id}" class="btn btn-outline-primary take" href=""data-toggle="modal" data-target="#exampleModal">Make a Bid</a>`
+            }
+                
+            </div>`
+                : ``
+            }
+        </div>
+    </div>
+</div>`;
+  });
 };
 window.addEventListener('load', async (e) => {
   e.preventDefault();
@@ -173,4 +231,8 @@ document.getElementById('logout').addEventListener('click', (e) => {
   e.preventDefault();
   sessionStorage.removeItem('Authorization');
   window.location.href = '../html/login.html';
+});
+document.getElementById('search-input').addEventListener('input', (e) => {
+  e.preventDefault();
+  search();
 });
