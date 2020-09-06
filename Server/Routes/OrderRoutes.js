@@ -8,6 +8,7 @@ import checkDeliverer from '../Middleware/checkDeleverer';
 import checkPerformOrder from '../Middleware/checkPerformOrder';
 import checkOwner from '../Middleware/checkOwner';
 import checkOwnerWithDescription from '../Middleware/checkOwnerWithDescription';
+import checkPaginationParams from '../Middleware/checkPaginationParams';
 
 const router = express.Router();
 const newOrder = new Order();
@@ -51,7 +52,13 @@ router.patch(
 );
 router.patch(
   '/rejected/:orderId',
-  [checkToken, checkOwner, checkOrderParams],
+  [checkToken, checkAdmin, checkOrderParams],
   newOrder.updateAcceptedOrder
+);
+router.get('/index/:pageNbr', newOrder.IndexPaginate);
+router.get(
+  '/mydescriptions/pages/:pageNbr',
+  [checkToken],
+  newOrder.getPriceDescriptionForMyOrder
 );
 export default router;

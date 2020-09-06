@@ -22,11 +22,50 @@ describe('Create a new order', () => {
         done();
       });
   });
-  it('Should return a success: new order created', (done) => {
+  it('Should return a success: 2nd order created', (done) => {
     chai
       .request(app)
       .post('/orders')
       .set('Authorization', process.env.userToken)
+      .send(testOrder[0])
+      .end((err, res) => {
+        expect(res).to.have.status(201);
+        expect(res.body.data).to.be.a('object');
+        expect(res.body.message).to.equal('Order created successfully');
+        done();
+      });
+  });
+  it('Should return a success: 3rd order created', (done) => {
+    chai
+      .request(app)
+      .post('/orders')
+      .set('Authorization', process.env.userToken)
+      .send(testOrder[0])
+      .end((err, res) => {
+        expect(res).to.have.status(201);
+        expect(res.body.data).to.be.a('object');
+        expect(res.body.message).to.equal('Order created successfully');
+        done();
+      });
+  });
+  it('Should return a success: 4th order created', (done) => {
+    chai
+      .request(app)
+      .post('/orders')
+      .set('Authorization', process.env.userToken)
+      .send(testOrder[0])
+      .end((err, res) => {
+        expect(res).to.have.status(201);
+        expect(res.body.data).to.be.a('object');
+        expect(res.body.message).to.equal('Order created successfully');
+        done();
+      });
+  });
+  it('Should return a success: new order created', (done) => {
+    chai
+      .request(app)
+      .post('/orders')
+      .set('Authorization', process.env.userToken2)
       .send(testOrder[0])
       .end((err, res) => {
         expect(res).to.have.status(201);
@@ -70,7 +109,6 @@ describe('View all orders', () => {
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body).to.have.property('data');
-        expect(res.body.data).to.be.a('object');
         expect(res.body.message).to.equal('Orders successfully retreived');
         done();
       });
@@ -124,7 +162,6 @@ describe('View my orders', () => {
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body).to.have.property('data');
-        expect(res.body.data).to.be.a('object');
         expect(res.body.message).to.equal('Order(s) successfully retreived');
         done();
       });
@@ -158,16 +195,16 @@ describe('Update my order', () => {
         done();
       });
   });
-  it('Should not update order: order not found', (done) => {
+  it('Should update an order', (done) => {
     chai
       .request(app)
-      .patch(`/myorders/${testOrder[2].orderId}`)
-      .set('Authorization', process.env.userToken2)
+      .patch(`/myorders/${testOrder[3].orderId}`)
+      .set('Authorization', process.env.adminToken)
       .send(testOrder[0])
       .end((err, res) => {
-        expect(res).to.have.status(404);
-        expect(res.body).to.have.property('error');
-        expect(res.body.error).to.equal('Order not found');
+        expect(res).to.have.status(200);
+        expect(res.body).to.have.property('message');
+        expect(res.body.message).to.equal('Order successfully updated');
         done();
       });
   });
@@ -212,12 +249,59 @@ describe('Perform order', () => {
   it('Should give the order price', (done) => {
     chai
       .request(app)
-      .post('/price_description')
+      .post('/price_descriptions')
       .set('Authorization', process.env.adminToken)
       .send(testOrder[4])
       .end((err, res) => {
         expect(res).to.have.status(200);
-        expect(res.body.data).to.be.a('object');
+        expect(res.body.message).to.equal('Price provided successfully');
+        done();
+      });
+  });
+  it('Should give the order price', (done) => {
+    chai
+      .request(app)
+      .post('/price_descriptions')
+      .set('Authorization', process.env.adminToken)
+      .send(testOrder[9])
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body.message).to.equal('Price provided successfully');
+        done();
+      });
+  });
+  it('Should give the order price', (done) => {
+    chai
+      .request(app)
+      .post('/price_descriptions')
+      .set('Authorization', process.env.adminToken)
+      .send(testOrder[10])
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body.message).to.equal('Price provided successfully');
+        done();
+      });
+  });
+  it('Should give the order price', (done) => {
+    chai
+      .request(app)
+      .post('/price_descriptions')
+      .set('Authorization', process.env.adminToken)
+      .send(testOrder[8])
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body.message).to.equal('Price provided successfully');
+        done();
+      });
+  });
+  it('Should give the order price', (done) => {
+    chai
+      .request(app)
+      .post('/price_descriptions')
+      .set('Authorization', process.env.adminToken)
+      .send(testOrder[11])
+      .end((err, res) => {
+        expect(res).to.have.status(200);
         expect(res.body.message).to.equal('Price provided successfully');
         done();
       });
@@ -225,7 +309,7 @@ describe('Perform order', () => {
   it('Should not delete order: order not found', (done) => {
     chai
       .request(app)
-      .post('/price_description')
+      .post('/price_descriptions')
       .set('Authorization', process.env.adminToken)
       .send(testOrder[5])
       .end((err, res) => {
@@ -238,7 +322,7 @@ describe('Perform order', () => {
   it('Should not delete order: invalid data', (done) => {
     chai
       .request(app)
-      .post('/price_description')
+      .post('/price_descriptions')
       .set('Authorization', process.env.adminToken)
       .send(testOrder[6])
       .end((err, res) => {
@@ -269,19 +353,18 @@ describe('Accept price', () => {
       .set('Authorization', process.env.userToken)
       .send(testOrder[0])
       .end((err, res) => {
-        expect(res).to.have.status(404);
+        expect(res).to.have.status(403);
         expect(res.body).to.have.property('error');
-        expect(res.body.error).to.equal('Price description not found');
         done();
       });
   });
 });
 describe('Reject an accepted order', () => {
-  it('Should allow the user to reject an accepted  order which have not been performed', (done) => {
+  it('Should allow the admin to reject an accepted  order which have not been performed', (done) => {
     chai
       .request(app)
       .patch(`/rejected/${testOrder[4].orderId}`)
-      .set('Authorization', process.env.userToken)
+      .set('Authorization', process.env.adminToken)
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body).to.have.property('message');
@@ -289,7 +372,7 @@ describe('Reject an accepted order', () => {
         done();
       });
   });
-  it('Should allow the user to reject an accepted  order which have not been performed', (done) => {
+  it('Should allow the admin to reject an accepted  order which have not been performed', (done) => {
     chai
       .request(app)
       .patch(`/rejected/${testOrder[3].orderId}`)
@@ -297,9 +380,75 @@ describe('Reject an accepted order', () => {
       .end((err, res) => {
         expect(res).to.have.status(403);
         expect(res.body).to.have.property('error');
-        expect(res.body.error).to.equal(
-          'You are not allowed to perform this action'
+        expect(res.body.error).to.equal('only admins can perform this');
+        done();
+      });
+  });
+});
+describe('View paginated results', () => {
+  it('Should return few orders', (done) => {
+    chai
+      .request(app)
+      .get('/index/1')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body).to.have.property('data');
+        expect(res.body.message).to.equal('Orders successfully retreived');
+        done();
+      });
+  });
+  it('Should return few orders', (done) => {
+    chai
+      .request(app)
+      .get('/index/2')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body).to.have.property('data');
+        expect(res.body.message).to.equal('Orders successfully retreived');
+        done();
+      });
+  });
+});
+describe('View paginated results', () => {
+  it('Should return few price descriptions', (done) => {
+    chai
+      .request(app)
+      .get('/mydescriptions/pages/1')
+      .set('Authorization', process.env.userToken)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body).to.have.property('data');
+        expect(res.body.message).to.equal(
+          'Descriptions successfully retreived'
         );
+        done();
+      });
+  });
+  it('Should return few price descriptions', (done) => {
+    chai
+      .request(app)
+      .get('/mydescriptions/pages/2')
+      .set('Authorization', process.env.userToken)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body).to.have.property('data');
+        expect(res.body.message).to.equal(
+          'Descriptions successfully retreived'
+        );
+        done();
+      });
+  });
+});
+describe('View orders by prefix', () => {
+  it('Should return orders by prefix', (done) => {
+    chai
+      .request(app)
+      .get('/orders/prefix/S')
+      .set('Authorization', process.env.adminToken)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body).to.have.property('data');
+        expect(res.body.message).to.equal('Orders successfully retrieved');
         done();
       });
   });
