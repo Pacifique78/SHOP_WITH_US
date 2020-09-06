@@ -82,7 +82,7 @@ window.addEventListener('load', async (e) => {
     <th scope="row">${user.id}</th>
     <td>${user.name}</td>
     <td>${user.isbuyer ? 'Buyer' : 'Deliverer'}</td>
-    <td><button type="button" class="btn btn-outline-primary bg-green" data-userId=${
+    <td><button type="button" data-target="#prodModal" class="btn btn-outline-primary bg-green" data-userId=${
       user.id
     } data-dismiss="modal">Change</button></td>
     <td><button type="button" class="btn btn-outline-primary bg-red" data-userId=${
