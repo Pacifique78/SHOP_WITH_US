@@ -1,4 +1,4 @@
-const url = 'https://akoonlineshop.herokuapp.com';
+const url = 'http://localhost:4500';
 const signUp = async (
   name,
   email,

@@ -1,4 +1,4 @@
-const url = 'https://akoonlineshop.herokuapp.com';
+const url = 'http://localhost:4500';
 const getSpecificOrder = async (orderId) =>
   await fetch(`${url}/orders/${orderId}`, {
     method: 'GET',
@@ -68,6 +68,7 @@ const editOrder = () => {
       updatedOrderId = orderId;
       const response = await getSpecificOrder(orderId);
       const json = await response.json();
+      console.log(json);
       lction.value = json.data.location;
       street.value = json.data.street;
       locationDesc.value = json.data.locationdesc;

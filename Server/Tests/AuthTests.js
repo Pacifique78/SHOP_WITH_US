@@ -46,6 +46,132 @@ describe('User SignUp', () => {
         done();
       });
   });
+  it('Should allow 2nd user to signup', (done) => {
+    chai
+      .request(app)
+      .post('/auth/signup')
+      .send(testUser[16])
+      .end((err, res) => {
+        expect(res).to.have.status(201);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('data');
+        expect(res.body.data).to.have.property('id');
+        expect(res.body.data).to.have.property('email');
+        done();
+      });
+  });
+  it('Should allow 3rd user to signup', (done) => {
+    chai
+      .request(app)
+      .post('/auth/signup')
+      .send(testUser[17])
+      .end((err, res) => {
+        expect(res).to.have.status(201);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('data');
+        expect(res.body.data).to.have.property('id');
+        expect(res.body.data).to.have.property('email');
+        done();
+      });
+  });
+  it('Should allow 4th user to signup', (done) => {
+    chai
+      .request(app)
+      .post('/auth/signup')
+      .send(testUser[18])
+      .end((err, res) => {
+        expect(res).to.have.status(201);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('data');
+        expect(res.body.data).to.have.property('id');
+        expect(res.body.data).to.have.property('email');
+        done();
+      });
+  });
+  it('Should allow 5th user to signup', (done) => {
+    chai
+      .request(app)
+      .post('/auth/signup')
+      .send(testUser[19])
+      .end((err, res) => {
+        expect(res).to.have.status(201);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('data');
+        expect(res.body.data).to.have.property('id');
+        expect(res.body.data).to.have.property('email');
+        done();
+      });
+  });
+  it('Should allow 6th user to signup', (done) => {
+    chai
+      .request(app)
+      .post('/auth/signup')
+      .send(testUser[20])
+      .end((err, res) => {
+        expect(res).to.have.status(201);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('data');
+        expect(res.body.data).to.have.property('id');
+        expect(res.body.data).to.have.property('email');
+        done();
+      });
+  });
+  it('Should allow 7th user to signup', (done) => {
+    chai
+      .request(app)
+      .post('/auth/signup')
+      .send(testUser[21])
+      .end((err, res) => {
+        expect(res).to.have.status(201);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('data');
+        expect(res.body.data).to.have.property('id');
+        expect(res.body.data).to.have.property('email');
+        done();
+      });
+  });
+  it('Should allow 8th user to signup', (done) => {
+    chai
+      .request(app)
+      .post('/auth/signup')
+      .send(testUser[22])
+      .end((err, res) => {
+        expect(res).to.have.status(201);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('data');
+        expect(res.body.data).to.have.property('id');
+        expect(res.body.data).to.have.property('email');
+        done();
+      });
+  });
+  it('Should allow 9th user to signup', (done) => {
+    chai
+      .request(app)
+      .post('/auth/signup')
+      .send(testUser[23])
+      .end((err, res) => {
+        expect(res).to.have.status(201);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('data');
+        expect(res.body.data).to.have.property('id');
+        expect(res.body.data).to.have.property('email');
+        done();
+      });
+  });
+  it('Should allow 10th user to signup', (done) => {
+    chai
+      .request(app)
+      .post('/auth/signup')
+      .send(testUser[24])
+      .end((err, res) => {
+        expect(res).to.have.status(201);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('data');
+        expect(res.body.data).to.have.property('id');
+        expect(res.body.data).to.have.property('email');
+        done();
+      });
+  });
   it('Should NOT allow a user to signup: Invalid data', (done) => {
     chai
       .request(app)

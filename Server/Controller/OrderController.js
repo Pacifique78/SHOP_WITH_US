@@ -40,8 +40,9 @@ class Order {
   }
 
   async getAllOrders(req, res) {
-    const selectQuerry = 'SELECT * FROM orders ORDER BY updatedon DESC;';
-    const results = await querry(selectQuerry);
+    const selectQuerry =
+      'SELECT * FROM orders WHERE buyerid!=$1 ORDER BY updatedon DESC;';
+    const results = await querry(selectQuerry, [req.tokenData.id]);
     if (results[0]) {
       return res.status(200).json({
         status: 200,
@@ -60,8 +61,8 @@ class Order {
 
   async getSpecificOrder(req, res) {
     const orderId = parseInt(req.params.orderId, 10);
-    const selectQuerry = 'SELECT * FROM orders WHERE id=$1;';
-    const result = await querry(selectQuerry, [orderId]);
+    const selectQuerry = 'SELECT * FROM orders WHERE id=$1 AND buyerid!=$2;';
+    const result = await querry(selectQuerry, [orderId, req.tokenData.id]);
     if (result[0]) {
       return res.status(200).json({
         status: 200,
@@ -95,42 +96,31 @@ class Order {
   }
 
   async updateMyOrder(req, res) {
-    const selectQuerry = 'SELECT * FROM orders WHERE id=$1 AND buyerid=$2;';
-    const result = await querry(selectQuerry, [
+    const {
+      productName,
+      description,
+      quantity,
+      location,
+      locationDesc,
+      street,
+    } = req.body;
+    const updatedOn = moment().format('LLL');
+    const updateQuery =
+      'UPDATE orders SET productname=$1, description=$2, quantity=$3, location=$4, locationdesc=$5, street=$6, updatedon=$7 WHERE id=$8 RETURNING *';
+    const updatedOrder = await querry(updateQuery, [
+      productName,
+      description,
+      quantity,
+      location,
+      locationDesc,
+      street,
+      updatedOn,
       parseInt(req.params.orderId, 10),
-      req.tokenData.id,
     ]);
-    if (result[0]) {
-      const {
-        productName,
-        description,
-        quantity,
-        location,
-        locationDesc,
-        street,
-      } = req.body;
-      const updatedOn = moment().format('LLL');
-      const updateQuery =
-        'UPDATE orders SET productname=$1, description=$2, quantity=$3, location=$4, locationdesc=$5, street=$6, updatedon=$7 WHERE id=$8 RETURNING *';
-      const updatedOrder = await querry(updateQuery, [
-        productName,
-        description,
-        quantity,
-        location,
-        locationDesc,
-        street,
-        updatedOn,
-        parseInt(req.params.orderId, 10),
-      ]);
-      return res.status(200).json({
-        status: 200,
-        message: 'Order successfully updated',
-        data: updatedOrder[0],
-      });
-    }
-    return res.status(404).json({
-      status: 404,
-      error: 'Order not found',
+    return res.status(200).json({
+      status: 200,
+      message: 'Order successfully updated',
+      data: updatedOrder[0],
     });
   }
 
@@ -234,7 +224,7 @@ class Order {
       return res.status(404).json({
         status: 404,
         error:
-          'No bid have been made yet, please wait for deliverers to make bids ',
+          'No bid have been made yet, please wait for deliverers to make bids',
       });
     }
     const selectQuerry2 = 'SELECT * FROM orders WHERE id=$1;';
@@ -301,6 +291,61 @@ class Order {
       status: 404,
       name: req.tokenData.name,
       error: 'No price description found',
+    });
+  }
+
+  async IndexPaginate(req, res) {
+    const { pageNbr } = req.params;
+    const selectQuerry = 'SELECT * FROM orders';
+    const limit = 3;
+    const startIndex = (pageNbr - 1) * limit;
+    const endIndex = pageNbr * limit;
+    const results = await querry(selectQuerry);
+    if (results[0]) {
+      const paginatedResult = {};
+      paginatedResult.results = results.slice(startIndex, endIndex);
+      if (endIndex < results.length) {
+        paginatedResult.next = `/index/${+pageNbr + 1}`;
+      }
+      if (startIndex > 0) {
+        paginatedResult.prev = `/index/${+pageNbr - 1}`;
+      }
+      return res.status(200).json({
+        status: 200,
+        message: 'Orders successfully retreived',
+        data: paginatedResult,
+      });
+    }
+  }
+
+  async getPriceDescriptionForMyOrder(req, res) {
+    const { pageNbr } = req.params;
+    const userId = req.tokenData.id;
+    const selectQuerry = 'SELECT * from price_descriptions WHERE buyerid=$1;';
+    const results = await querry(selectQuerry, [userId]);
+    const limit = 4;
+    const startIndex = (pageNbr - 1) * limit;
+    const endIndex = pageNbr * limit;
+    if (results[0]) {
+      const paginatedResult = {};
+      paginatedResult.results = results.slice(startIndex, endIndex);
+      if (endIndex < results.length) {
+        paginatedResult.next = `$/mydescriptions/pages/${+pageNbr + 1}`;
+      }
+      if (startIndex > 0) {
+        paginatedResult.prev = `$/mydescriptions/pages/${+pageNbr - 1}`;
+      }
+      return res.status(200).json({
+        status: 200,
+        name: req.tokenData.name,
+        message: 'Descriptions successfully retreived',
+        data: paginatedResult,
+      });
+    }
+    return res.status(404).json({
+      status: 404,
+      name: req.tokenData.name,
+      error: 'No description found',
     });
   }
 }
