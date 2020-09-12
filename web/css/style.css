@@ -1885,6 +1885,7 @@ you can use the generic selector below, but it's slower:
   font-size: 13px;
   line-height: 20px;
   color: #737373;
+  border-top: 1px solid #59c5dc;
 }
 
 .site-footer hr {
@@ -1953,7 +1954,8 @@ you can use the generic selector below, but it's slower:
 }
 
 .copyright-text {
-  margin: 0
+  margin: 0;
+  padding-right: 15px;
 }
 
 @media (max-width:991px) {
@@ -2214,4 +2216,23 @@ you can use the generic selector below, but it's slower:
   background: #1583e9;
   width: 35px;
   height: 3px;
+}
+.how-works{
+  
+}
+.how-title{
+  text-transform: uppercase;
+}
+.how-title span{
+  color: #1583e9;
+}
+.process-icon{
+  font-size:20px;
+  color: #1583e9;
+  margin-bottom: 20px;
+}
+.process-w {
+  font-size: 20px;
+  padding-bottom: 10px;
+  padding-left: 10px;
 }
